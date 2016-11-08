@@ -58,7 +58,6 @@ public class MainActivity extends AppCompatActivity implements PitchDetectionHan
         if (ContextCompat.checkSelfPermission(this,
                 Manifest.permission.RECORD_AUDIO)
                 != PackageManager.PERMISSION_GRANTED) {
-
             // Should we show an explanation?
             if (ActivityCompat.shouldShowRequestPermissionRationale(this,
                     Manifest.permission.RECORD_AUDIO)) {
@@ -97,23 +96,17 @@ public class MainActivity extends AppCompatActivity implements PitchDetectionHan
                 // If request is cancelled, the result arrays are empty.
                 if (grantResults.length > 0
                         && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                    int permissionCheck = ContextCompat.checkSelfPermission(this,
-                            Manifest.permission.RECORD_AUDIO);
-                    System.out.println("Permission je " + permissionCheck);
                     startDispatcher();
                     // permission was granted, yay! Do the
                     // contacts-related task you need to do.
 
                 } else {
-                    startDispatcher();
                     // permission denied, boo! Disable the
                     // functionality that depends on this permission.
                 }
                 return;
             }
 
-            // other 'case' lines to check for other
-            // permissions this app might request
         }
     }
 
