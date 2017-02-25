@@ -15,6 +15,13 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
 
+import be.tarsos.dsp.AudioDispatcher;
+import be.tarsos.dsp.AudioEvent;
+import be.tarsos.dsp.io.android.AudioDispatcherFactory;
+import be.tarsos.dsp.pitch.PitchDetectionHandler;
+import be.tarsos.dsp.pitch.PitchDetectionResult;
+import be.tarsos.dsp.pitch.PitchProcessor;
+
 public class MainActivity extends WearableActivity {
 
     private static final SimpleDateFormat AMBIENT_DATE_FORMAT =
@@ -37,15 +44,28 @@ public class MainActivity extends WearableActivity {
         mTextView = (TextView) findViewById(R.id.text);
         mClockView = (TextView) findViewById(R.id.clock);
 
-        messageFilter = new IntentFilter(Intent.ACTION_SEND);
-        messageReceiver = new MessageReceiver();
-        LocalBroadcastManager.getInstance(this).registerReceiver(messageReceiver, messageFilter);
+        PitchDetectionHandler handler = new PitchDetectionHandler() {
+            @Override
+            public void handlePitch(PitchDetectionResult pitchDetectionResult,
+                                    AudioEvent audioEvent) {
+                System.out.println(audioEvent.getTimeStamp() + " " + pitchDetectionResult.getPitch());
+            }
+        };
+        AudioDispatcher adp = AudioDispatcherFactory.fromDefaultMicrophone(11025, 1024, 512);
+        adp.addAudioProcessor(new PitchProcessor(PitchProcessor.PitchEstimationAlgorithm.FFT_YIN, 11025, 1024, handler));
+        adp.run();
+
+        //messageFilter = new IntentFilter(Intent.ACTION_SEND);
+        //messageReceiver = new MessageReceiver();
+        //LocalBroadcastManager.getInstance(this).registerReceiver(messageReceiver, messageFilter);
 
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
+        this.finish();
+        System.exit(0);
         LocalBroadcastManager.getInstance(this).unregisterReceiver(messageReceiver);
     }
 

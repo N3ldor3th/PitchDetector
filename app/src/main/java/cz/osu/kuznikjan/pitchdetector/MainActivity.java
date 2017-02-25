@@ -34,10 +34,8 @@ public class MainActivity extends AppCompatActivity implements PitchDetectionHan
         GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener {
     private static final int MY_PERMISSIONS_REQUEST_RECORD_AUDIO = 1;
     private AudioDispatcher dispatcher;
-    private TextView textHertz;
-    private TextView textProb;
-    private ImageButton fabRecord;
-    private ImageButton fabStop;
+    private TextView textHertz, textProb, textTone, textClosenessPercent, textClosenessHz, textClosenessCents;
+    private ImageButton fabRecord,fabStop;
     private DiscreteSeekBar seekBar;
     private GoogleApiClient mGoogleApiClient;
 
@@ -49,6 +47,10 @@ public class MainActivity extends AppCompatActivity implements PitchDetectionHan
         setSupportActionBar(toolbar);
         textHertz = (TextView) findViewById(R.id.hz);
         textProb = (TextView) findViewById(R.id.prob);
+        textTone = (TextView) findViewById(R.id.note);
+        textClosenessPercent = (TextView) findViewById(R.id.deviation);
+        textClosenessHz = (TextView) findViewById(R.id.closenessHz);
+        textClosenessCents = (TextView) findViewById(R.id.closenessCents);
         fabRecord = (ImageButton) findViewById(R.id.fab_record);
         fabStop = (ImageButton) findViewById(R.id.fab_stop);
         fabRecord.setOnClickListener(this);
@@ -121,39 +123,35 @@ public class MainActivity extends AppCompatActivity implements PitchDetectionHan
     }
 
     private void startDispatcher() {
-        dispatcher = AudioDispatcherFactory.fromDefaultMicrophone(11025, 1024, 512);
+        dispatcher = AudioDispatcherFactory.fromDefaultMicrophone(44100, 4096, 1024);
         PitchDetectionHandler pdh = this;
-        AudioProcessor p = new PitchProcessor(PitchProcessor.PitchEstimationAlgorithm.FFT_YIN, 11025, 1024, pdh);
+        AudioProcessor p = new PitchProcessor(PitchProcessor.PitchEstimationAlgorithm.FFT_YIN, 44100, 4096, pdh);
         dispatcher.addAudioProcessor(p);
         new Thread(dispatcher,"Audio Dispatcher").start();
     }
 
     @Override
     public void handlePitch(PitchDetectionResult result, AudioEvent audioEvent) {
-        final Float pitchInHz = result.getPitch();
-        final Float probability = result.getProbability();
-        new DataLayerThread(mGoogleApiClient,"/message_path", Float.toString(pitchInHz)).start();
+        final NoteResult noteResult = NotePitchHandler.mapPitchDetectionResultToNoteResult(result);
+        //new DataLayerThread(mGoogleApiClient,"/message_path", Float.toString(pitchInHz)).start();
         runOnUiThread(new Runnable() {
             @Override
             public void run() {
-                if (pitchInHz != -1) {
-                    textHertz.setText("" + String.format("%.02f", pitchInHz) + " pitch found in Hz");
-                    textProb.setText("" + String.format("%.02f", probability * 100) + " probability in %");
-                    seekBar.setProgress(Math.round(pitchInHz));
+                if (noteResult.getPitch() != -1) {
+                    textHertz.setText("" + String.format("%.02f", noteResult.getPitch()) + " pitch found in Hz");
+                    textProb.setText("" + String.format("%.02f", noteResult.getProbability()) + " probability in %");
+                    textClosenessPercent.setText("" + String.format("%.02f", noteResult.getClosenessPercent()) + " closeness in %");
+                    textClosenessHz.setText("" + String.format("%.02f", noteResult.getClosenessHz()) + " closeness in Hz");
+                    textClosenessCents.setText("" + String.format("%.02f", noteResult.getClosenessCents()) + " closeness in cents");
+                    textTone.setText("Closest note is :" + noteResult.getNote());
 
-                    if (pitchInHz >= 82.0F && pitchInHz < 82.8F) {
+                    double d = noteResult.getClosenessCents();
+                    int i = (int) d;
+                    seekBar.setProgress(i);
+
+                    if (noteResult.getClosenessCents() >= -5.0F && noteResult.getClosenessCents() < 5.0F) {
                         seekBar.setThumbColor(Color.GREEN, Color.GREEN);
-                    } else if (pitchInHz >= 109.5F && pitchInHz < 110.5F) {
-                        seekBar.setThumbColor(Color.GREEN, Color.GREEN);
-                    } else if (pitchInHz >= 146.2F && pitchInHz < 147.3F) {
-                        seekBar.setThumbColor(Color.GREEN, Color.GREEN);
-                    } else if (pitchInHz >= 195.3F && pitchInHz < 196.7F) {
-                        seekBar.setThumbColor(Color.GREEN, Color.GREEN);
-                    } else if (pitchInHz >= 246.2F && pitchInHz < 247.7F) {
-                        seekBar.setThumbColor(Color.GREEN, Color.GREEN);
-                    } else if (pitchInHz >= 328.5F && pitchInHz < 330.5F) {
-                        seekBar.setThumbColor(Color.GREEN, Color.GREEN);
-                    } else {
+                    }else {
                         seekBar.setThumbColor(Color.RED, Color.RED);
                     }
 
