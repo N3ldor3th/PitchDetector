@@ -1,0 +1,581 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        is-multidex="true"
+        jar="C:\AndroidStudioProjects\PitchDetector\app\build\intermediates\exploded-aar\com.google.firebase\firebase-config\9.8.0\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="23.0.2"
+        sha1="289cad663c288ce965463cb9ece8b35cc7de0fac">
+        <dex dex="C:\AndroidStudioProjects\PitchDetector\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.firebase-firebase-config-9.8.0_4d23edd4864e973c8c07ad77b4cca2c04228a80a\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\AndroidStudioProjects\PitchDetector\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-basement\9.8.0\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="23.0.2"
+        sha1="9f6d236bac26d02b410e4ee186ba517ace5ee661">
+        <dex dex="C:\AndroidStudioProjects\PitchDetector\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.android.gms-play-services-basement-9.8.0_dabe48ba73fc8ad182ec7840a34f31a5b4667d30\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\AndroidStudioProjects\PitchDetector\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-location\9.8.0\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="23.0.2"
+        sha1="04bbbddf868aa02dd33f9e90d8f5d908c360f638">
+        <dex dex="C:\AndroidStudioProjects\PitchDetector\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.android.gms-play-services-location-9.8.0_5cacfaf6d2235ed87bb0f60eaa020d62e87ab508\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\AndroidStudioProjects\PitchDetector\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-maps\9.8.0\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="23.0.2"
+        sha1="122ec9237acd8a57d974b9d529987f1ee6ca5aea">
+        <dex dex="C:\AndroidStudioProjects\PitchDetector\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.android.gms-play-services-maps-9.8.0_4b1f2422b5beaf9a8ee8e8f9b5b9b23bf0611815\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\AndroidStudioProjects\PitchDetector\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-safetynet\9.8.0\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="23.0.2"
+        sha1="20a3c4e355150c15c13dd58045d43ad0c717d916">
+        <dex dex="C:\AndroidStudioProjects\PitchDetector\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.android.gms-play-services-safetynet-9.8.0_6b87bb8ea0cc2bd02993a5ab3be030830c026cb4\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\AndroidStudioProjects\PitchDetector\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\24.0.0\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="23.0.2"
+        sha1="0874286cc2fd88d54fdf130e9d5372730da6de97">
+        <dex dex="C:\AndroidStudioProjects\PitchDetector\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-appcompat-v7-24.0.0_a5b9eb630f8e51358cd71c3a4a6f9c6327822335\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\AndroidStudioProjects\PitchDetector\app\libs\TarsosDSP-Android-2.3.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="23.0.2"
+        sha1="e117075d275a45da96046e4efb3ca0a30e60b809">
+        <dex dex="C:\AndroidStudioProjects\PitchDetector\app\build\intermediates\transforms\dex\debug\folders\1000\2\TarsosDSP-Android-2.3_5ae9bba83bd12fee364146d0d0dceb2efebcddc1\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\AndroidStudioProjects\PitchDetector\app\build\intermediates\exploded-aar\com.google.firebase\firebase-auth\9.8.0\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="23.0.2"
+        sha1="15e59454416c6341bd3ed2533b585cd340682dd1">
+        <dex dex="C:\AndroidStudioProjects\PitchDetector\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.firebase-firebase-auth-9.8.0_7254f04e96a76bc4cbb6aae549cd3285e8e3e87f\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\AndroidStudioProjects\PitchDetector\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-wearable\9.8.0\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="23.0.2"
+        sha1="0b8e087da59c0b062c33f49a335e59f907086da2">
+        <dex dex="C:\AndroidStudioProjects\PitchDetector\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.android.gms-play-services-wearable-9.8.0_cb4d538291f582bc75e32867512c5494a57ee4f0\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\AndroidStudioProjects\PitchDetector\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-plus\9.8.0\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="23.0.2"
+        sha1="3daa7a9c9009fd386872a84c177a76979bdcafd6">
+        <dex dex="C:\AndroidStudioProjects\PitchDetector\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.android.gms-play-services-plus-9.8.0_8e448f90adb1d1503b72fd0297df40cc39f0ccc1\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\AndroidStudioProjects\PitchDetector\app\build\intermediates\exploded-aar\com.android.support\design\23.2.0\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="23.0.2"
+        sha1="1aa5b025efe97f5006f5be16d6ca67c6c3c0c0d8">
+        <dex dex="C:\AndroidStudioProjects\PitchDetector\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-design-23.2.0_a7243bbf32fe260d410b977014997afc6d3d9c60\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\AndroidStudioProjects\PitchDetector\app\build\intermediates\exploded-aar\com.google.firebase\firebase-database-connection\9.8.0\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="23.0.2"
+        sha1="5f47ede9561595584dca71104baa0fecb36dda87">
+        <dex dex="C:\AndroidStudioProjects\PitchDetector\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.firebase-firebase-database-connection-9.8.0_6dd919a0759e9ae0dd7211d15f84d05155f212f2\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\AndroidStudioProjects\PitchDetector\app\build\intermediates\exploded-aar\com.android.support\animated-vector-drawable\24.0.0\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="23.0.2"
+        sha1="e70f608219ed6b974644c333249ab2bb7b71de98">
+        <dex dex="C:\AndroidStudioProjects\PitchDetector\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-animated-vector-drawable-24.0.0_a5a8e36f7d5b1b2ceaf2221e6f95b23d088a2989\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\AndroidStudioProjects\PitchDetector\app\build\intermediates\exploded-aar\com.android.support\recyclerview-v7\23.2.0\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="23.0.2"
+        sha1="d4c936aa8c7d2522c82e3f1829c791d9e367f009">
+        <dex dex="C:\AndroidStudioProjects\PitchDetector\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-recyclerview-v7-23.2.0_699fcbd6cc7564aba39681c4c290c24cdd50408b\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\AndroidStudioProjects\PitchDetector\app\build\intermediates\exploded-aar\com.google.firebase\firebase-analytics-impl\9.8.0\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="23.0.2"
+        sha1="190a642ba16d1421296a4d794606279b80039c59">
+        <dex dex="C:\AndroidStudioProjects\PitchDetector\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.firebase-firebase-analytics-impl-9.8.0_ef80d9279136f8dcb2707aa2f24dbb577d987353\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\AndroidStudioProjects\PitchDetector\app\build\intermediates\exploded-aar\com.google.firebase\firebase-analytics\9.8.0\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="23.0.2"
+        sha1="9ff04cc3470178a44512624036751a803418c2ca">
+        <dex dex="C:\AndroidStudioProjects\PitchDetector\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.firebase-firebase-analytics-9.8.0_89081f646429a08d78d854a8458138dfae285be6\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\AndroidStudioProjects\PitchDetector\app\build\intermediates\exploded-aar\com.android.support\palette-v7\24.0.0\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="23.0.2"
+        sha1="734e80dffea7bd76c18ae256822a124c30d85850">
+        <dex dex="C:\AndroidStudioProjects\PitchDetector\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-palette-v7-24.0.0_7e318f605b2f5032570d7e3d785616f224498c61\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\AndroidStudioProjects\PitchDetector\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-auth-base\9.8.0\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="23.0.2"
+        sha1="a1ed98e01bd58976d80c062fd0ea2968a1ff68a1">
+        <dex dex="C:\AndroidStudioProjects\PitchDetector\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.android.gms-play-services-auth-base-9.8.0_b79194e4e6ba158806656e6761eeacc1809a4fa1\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\AndroidStudioProjects\PitchDetector\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-instantapps\9.8.0\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="23.0.2"
+        sha1="00d358528c5a8731a6e19bca910cbb3fd755ee31">
+        <dex dex="C:\AndroidStudioProjects\PitchDetector\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.android.gms-play-services-instantapps-9.8.0_dbe4f8944cce6fcd1ce254e5db3ac4c1ec3114bb\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\AndroidStudioProjects\PitchDetector\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-nearby\9.8.0\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="23.0.2"
+        sha1="c81df6bd515398ebe45089b0b16c55752a131f6a">
+        <dex dex="C:\AndroidStudioProjects\PitchDetector\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.android.gms-play-services-nearby-9.8.0_cf97a15419b64c51f4952966883518f3ff1596e3\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\AndroidStudioProjects\PitchDetector\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-vision\9.8.0\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="23.0.2"
+        sha1="a30aea7df545072ad3c06f56b2efc13e67222140">
+        <dex dex="C:\AndroidStudioProjects\PitchDetector\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.android.gms-play-services-vision-9.8.0_e0b5bc3c006c49ed269ea9916ee8875d0c78132f\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\AndroidStudioProjects\PitchDetector\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-cast\9.8.0\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="23.0.2"
+        sha1="74ac7cbcf0de4a88e59612dc3a9e3f9e71acb4ca">
+        <dex dex="C:\AndroidStudioProjects\PitchDetector\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.android.gms-play-services-cast-9.8.0_e3c72407df450f89dc2517a7dfec360754496c32\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\AndroidStudioProjects\PitchDetector\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-fitness\9.8.0\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="23.0.2"
+        sha1="a7a04d6b7c01e569a285fa627cf64f5b05295906">
+        <dex dex="C:\AndroidStudioProjects\PitchDetector\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.android.gms-play-services-fitness-9.8.0_fc381b3684cb736133ab51e381e982f4fbfa8cd1\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\kuznijan\AppData\Local\Android\sdk\extras\android\m2repository\com\android\support\support-annotations\24.0.0\support-annotations-24.0.0.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="23.0.2"
+        sha1="2943c74db6d4346ab8c6531adac91fa05c137c40">
+        <dex dex="C:\AndroidStudioProjects\PitchDetector\app\build\intermediates\transforms\dex\debug\folders\1000\10\support-annotations-24.0.0_8b154545f310ed4a180f6e8c4c91b09969ce440c\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\AndroidStudioProjects\PitchDetector\app\build\intermediates\exploded-aar\com.google.firebase\firebase-common\9.8.0\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="23.0.2"
+        sha1="c61641e333fa88da21758bab8cc28ee16604b05f">
+        <dex dex="C:\AndroidStudioProjects\PitchDetector\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.firebase-firebase-common-9.8.0_ef611446fb09c588227430362edf83b0ccf985b9\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\AndroidStudioProjects\PitchDetector\app\build\intermediates\exploded-aar\com.android.support\mediarouter-v7\24.0.0\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="23.0.2"
+        sha1="b327fbe2fad414bc38cf0ce8f7efe1a38f572837">
+        <dex dex="C:\AndroidStudioProjects\PitchDetector\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-mediarouter-v7-24.0.0_63c1e9d9ff9f36e35e3195f22fa066b5a98e5e66\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\AndroidStudioProjects\PitchDetector\app\build\intermediates\exploded-aar\com.google.firebase\firebase-auth-module\9.8.0\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="23.0.2"
+        sha1="3f8f779a22cbb4c4d0759467a4f1011bb5252970">
+        <dex dex="C:\AndroidStudioProjects\PitchDetector\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.firebase-firebase-auth-module-9.8.0_de08b7559e8ed5bcec8e3b8b814f0edeac83edc7\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\AndroidStudioProjects\PitchDetector\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-appinvite\9.8.0\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="23.0.2"
+        sha1="e56f31b23ddb067f95f01255295167db7c798612">
+        <dex dex="C:\AndroidStudioProjects\PitchDetector\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.android.gms-play-services-appinvite-9.8.0_ddb13ebe5c96d845d260f128e3756cc56b9654e1\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\AndroidStudioProjects\PitchDetector\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-clearcut\9.8.0\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="23.0.2"
+        sha1="ee5304fd374e0b4ebf6b42d4037fbfb2c5336511">
+        <dex dex="C:\AndroidStudioProjects\PitchDetector\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.android.gms-play-services-clearcut-9.8.0_081c2223ab2c7c2af670093d60e5627d182f7a6d\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\AndroidStudioProjects\PitchDetector\app\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="23.0.2"
+        sha1="c66caee86771fd43c6c9a692e70ea5ec30113995">
+        <dex dex="C:\AndroidStudioProjects\PitchDetector\app\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run-bootstrap_aa45d441e3e4bc54b6d5f46ffcbf31f8fdd26cb4\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\AndroidStudioProjects\PitchDetector\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-awareness\9.8.0\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="23.0.2"
+        sha1="a2537b11ae24b42172d34e2a613fc0b903c56158">
+        <dex dex="C:\AndroidStudioProjects\PitchDetector\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.android.gms-play-services-awareness-9.8.0_bc3d5d818fcbb7420307181f86f18ffc37919db2\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\AndroidStudioProjects\PitchDetector\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-drive\9.8.0\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="23.0.2"
+        sha1="0b53c4b90654b67ee3892a8e2e7b819c083ab7a6">
+        <dex dex="C:\AndroidStudioProjects\PitchDetector\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.android.gms-play-services-drive-9.8.0_41f6f1c28756260d3ae87b53f2ab56284716caae\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\AndroidStudioProjects\PitchDetector\app\build\intermediates\exploded-aar\com.android.support\mediarouter-v7\24.0.0\jars\libs\internal_impl-24.0.0.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="23.0.2"
+        sha1="b6763651ec29b4c95e7bbe63fc393ffcc8c4c2c5">
+        <dex dex="C:\AndroidStudioProjects\PitchDetector\app\build\intermediates\transforms\dex\debug\folders\1000\10\internal_impl-24.0.0_e15012cd7f0baf80701dc5406fcd8557f63df606\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\AndroidStudioProjects\PitchDetector\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-tasks\9.8.0\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="23.0.2"
+        sha1="bf2e1838e4428616c1aa26edf43de72b5b99bf84">
+        <dex dex="C:\AndroidStudioProjects\PitchDetector\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.android.gms-play-services-tasks-9.8.0_f3856ba1215c9ce18dbf0f073d59177c472e4eb0\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\AndroidStudioProjects\PitchDetector\app\build\intermediates\exploded-aar\com.google.firebase\firebase-storage\9.8.0\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="23.0.2"
+        sha1="7fd91ec2730fdaa82906aad32a3f3d3e574bae56">
+        <dex dex="C:\AndroidStudioProjects\PitchDetector\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.firebase-firebase-storage-9.8.0_8aecc4a348902db7a048bebee60f0a5506a86fd5\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\AndroidStudioProjects\PitchDetector\app\build\intermediates\exploded-aar\com.google.firebase\firebase-storage-common\9.8.0\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="23.0.2"
+        sha1="ec9104b53aee77dfcfd2fe1c4add23ff7c4df55f">
+        <dex dex="C:\AndroidStudioProjects\PitchDetector\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.firebase-firebase-storage-common-9.8.0_eeafa722f555a6ffe469aa4841fdb6ecd6bf71b4\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\AndroidStudioProjects\PitchDetector\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-gass\9.8.0\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="23.0.2"
+        sha1="363a20f1d25336e827dd24020f2ecdc42d62638f">
+        <dex dex="C:\AndroidStudioProjects\PitchDetector\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.android.gms-play-services-gass-9.8.0_ec7c89df72db95d6779e70c9ef9d2076762e377a\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\AndroidStudioProjects\PitchDetector\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-ads\9.8.0\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="23.0.2"
+        sha1="f2d240dd085626f03f759c41d628a0c8b63e491f">
+        <dex dex="C:\AndroidStudioProjects\PitchDetector\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.android.gms-play-services-ads-9.8.0_b0f0326a5dfa705b16d31cae848677baddcf0f63\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\AndroidStudioProjects\PitchDetector\app\build\intermediates\exploded-aar\com.google.firebase\firebase-messaging\9.8.0\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="23.0.2"
+        sha1="5ffe8867f51cfc726e9fb21db1e5b6962ebf25a0">
+        <dex dex="C:\AndroidStudioProjects\PitchDetector\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.firebase-firebase-messaging-9.8.0_68c37bf1397e3b004f45499249dcf33801d679e7\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\AndroidStudioProjects\PitchDetector\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-analytics-impl\9.8.0\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="23.0.2"
+        sha1="50e35ae101a679c4c8ef3dda075b1df9d5d947d9">
+        <dex dex="C:\AndroidStudioProjects\PitchDetector\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.android.gms-play-services-analytics-impl-9.8.0_b76c234445080c86c1de0488c52d9b786eab5bc8\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\AndroidStudioProjects\PitchDetector\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-tagmanager-api\9.8.0\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="23.0.2"
+        sha1="266570862e5792ef3c51143a8b8593cf54fac68d">
+        <dex dex="C:\AndroidStudioProjects\PitchDetector\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.android.gms-play-services-tagmanager-api-9.8.0_e070c7caebe8fe6d6b98702a72a551710bd3dec7\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\AndroidStudioProjects\PitchDetector\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-appindexing\9.8.0\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="23.0.2"
+        sha1="e3234cd25e23069abd48ecd2117bc0e8011bf45a">
+        <dex dex="C:\AndroidStudioProjects\PitchDetector\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.android.gms-play-services-appindexing-9.8.0_8401e7db9fe54f218a77270d1a5c4cb5463fd55b\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\AndroidStudioProjects\PitchDetector\app\build\intermediates\exploded-aar\com.android.support\support-v4\24.0.0\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="23.0.2"
+        sha1="2f7e6e2dad1bccaf68a8820820adc6c0d5b96d37">
+        <dex dex="C:\AndroidStudioProjects\PitchDetector\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-v4-24.0.0_805cbbd70e85435842669b5af7355ad9d0fed7a5\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\AndroidStudioProjects\PitchDetector\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-panorama\9.8.0\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="23.0.2"
+        sha1="2d3035050a075484cbf2e33f1ce1f779bae4d451">
+        <dex dex="C:\AndroidStudioProjects\PitchDetector\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.android.gms-play-services-panorama-9.8.0_28a7a8adaee059f2d4a9c2158de125a63cbc98a5\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\AndroidStudioProjects\PitchDetector\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-tagmanager\9.8.0\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="23.0.2"
+        sha1="a972970c8beddb69c198f61f3fc55f0606a7dfe3">
+        <dex dex="C:\AndroidStudioProjects\PitchDetector\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.android.gms-play-services-tagmanager-9.8.0_cf908862cdac7cb5e51e7150e0e374b0734d2b4b\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\AndroidStudioProjects\PitchDetector\app\build\intermediates\incremental-runtime-classes\debug\instant-run.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="23.0.2"
+        sha1="5b38684b4711fe1d1e66b6a87493f4ca1970d24d">
+        <dex dex="C:\AndroidStudioProjects\PitchDetector\app\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run_c3ae65b9ccbab053487534141cd5af31f0fbd137\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\AndroidStudioProjects\PitchDetector\app\build\intermediates\exploded-aar\com.google.firebase\firebase-crash\9.8.0\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="23.0.2"
+        sha1="b4671be3d1288bf4e5f527cd33e42909fbe4ecc6">
+        <dex dex="C:\AndroidStudioProjects\PitchDetector\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.firebase-firebase-crash-9.8.0_e1eb4e1492ed08e2864e754d910af662771edcb4\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\AndroidStudioProjects\PitchDetector\app\build\intermediates\exploded-aar\com.google.firebase\firebase-database\9.8.0\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="23.0.2"
+        sha1="03df48d3713661d66ad024b1e406259a4c26fcac">
+        <dex dex="C:\AndroidStudioProjects\PitchDetector\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.firebase-firebase-database-9.8.0_aaf3693a68b7d96a885fdde0c5dbefbb48f2c3ae\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\AndroidStudioProjects\PitchDetector\app\build\intermediates\exploded-aar\com.android.support\support-v4\24.0.0\jars\libs\internal_impl-24.0.0.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="23.0.2"
+        sha1="fcaf463e10e69c1923ccf1edeba3b4196d239e00">
+        <dex dex="C:\AndroidStudioProjects\PitchDetector\app\build\intermediates\transforms\dex\debug\folders\1000\10\internal_impl-24.0.0_ae88fdf0688067b4f8ee93f6454bc0820114fbd7\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\AndroidStudioProjects\PitchDetector\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-auth\9.8.0\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="23.0.2"
+        sha1="ca851be26ff89f5b32cc222cee98139fb3fac830">
+        <dex dex="C:\AndroidStudioProjects\PitchDetector\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.android.gms-play-services-auth-9.8.0_c61b94d5bbfb2662c046afa1fe34fc032f89cac0\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\AndroidStudioProjects\PitchDetector\app\build\intermediates\exploded-aar\com.google.firebase\firebase-auth-common\9.8.0\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="23.0.2"
+        sha1="4438b1a7848a7c571122ba618aa1304514aabee6">
+        <dex dex="C:\AndroidStudioProjects\PitchDetector\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.firebase-firebase-auth-common-9.8.0_4e59c1b895a5812cf7c4ce3ada29ebcf3c514ac4\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\AndroidStudioProjects\PitchDetector\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-identity\9.8.0\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="23.0.2"
+        sha1="cef85cfc7df40e29fbea58844dd4c1e7d0b15542">
+        <dex dex="C:\AndroidStudioProjects\PitchDetector\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.android.gms-play-services-identity-9.8.0_5f1f89ef3c302f70d647cfbbd38d33abb9ee64da\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\AndroidStudioProjects\PitchDetector\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-games\9.8.0\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="23.0.2"
+        sha1="fbb3885c40e431cd2b0dc69c0cab2bf6d5da7b43">
+        <dex dex="C:\AndroidStudioProjects\PitchDetector\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.android.gms-play-services-games-9.8.0_f2dd8b5ead9979bb9b846585eed560b076b8b987\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\AndroidStudioProjects\PitchDetector\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-places\9.8.0\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="23.0.2"
+        sha1="679251204de40ace98776a6f4e3a649c27e3d89f">
+        <dex dex="C:\AndroidStudioProjects\PitchDetector\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.android.gms-play-services-places-9.8.0_37b6dacec38277cf0fbb198ded256d17e3fe2ec7\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\AndroidStudioProjects\PitchDetector\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-base\9.8.0\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="23.0.2"
+        sha1="7e92aadd0697922316d1395c1887a23aebec640a">
+        <dex dex="C:\AndroidStudioProjects\PitchDetector\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.android.gms-play-services-base-9.8.0_0f36c02bf6d70de54c9254a1de0467c2525aef48\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\AndroidStudioProjects\PitchDetector\app\build\intermediates\exploded-aar\com.android.support\support-vector-drawable\24.0.0\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="23.0.2"
+        sha1="3bd97cfefd783e9de1dd1c30574a6adb44b4409b">
+        <dex dex="C:\AndroidStudioProjects\PitchDetector\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-vector-drawable-24.0.0_574c8e363215100bf01746134c968dc7138d7f16\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\AndroidStudioProjects\PitchDetector\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-cast-framework\9.8.0\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="23.0.2"
+        sha1="055eed08c9cff50cac0db69c74c4d9ff7aef3d84">
+        <dex dex="C:\AndroidStudioProjects\PitchDetector\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.android.gms-play-services-cast-framework-9.8.0_19d26a510e51997b028dad35067be1782b4b1d30\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\AndroidStudioProjects\PitchDetector\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-analytics\9.8.0\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="23.0.2"
+        sha1="16afe57c1d7f8165d107c7806ce7b0c71de87159">
+        <dex dex="C:\AndroidStudioProjects\PitchDetector\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.android.gms-play-services-analytics-9.8.0_23e29687488208cb25ffd1df98f40c70160ee08f\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\AndroidStudioProjects\PitchDetector\app\build\intermediates\exploded-aar\org.adw.library\discrete-seekbar\1.0.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="23.0.2"
+        sha1="7be042dd2aa8157a2b63934902f472952d2ea1fe">
+        <dex dex="C:\AndroidStudioProjects\PitchDetector\app\build\intermediates\transforms\dex\debug\folders\1000\10\org.adw.library-discrete-seekbar-1.0.1_4529f2fe902d6d839c56694e162ed9e84a27ca1d\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\AndroidStudioProjects\PitchDetector\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-wallet\9.8.0\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="23.0.2"
+        sha1="910c013c511f752c4bbe24c5f492f669f4a3ccc0">
+        <dex dex="C:\AndroidStudioProjects\PitchDetector\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.android.gms-play-services-wallet-9.8.0_a7f8ae8a999d4c135adfc7e2fc91f3b7f4108907\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\AndroidStudioProjects\PitchDetector\app\build\intermediates\exploded-aar\com.google.firebase\firebase-iid\9.8.0\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="23.0.2"
+        sha1="6b6f292b8b951dcf2ecf2b20853e3eabc7d65c48">
+        <dex dex="C:\AndroidStudioProjects\PitchDetector\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.firebase-firebase-iid-9.8.0_6387e7e1b543db0a2f486c143bc56b0767a3b37f\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\AndroidStudioProjects\PitchDetector\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-iid\9.8.0\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="23.0.2"
+        sha1="85299bf1924dde0200109a58033c5ef84ecb6991">
+        <dex dex="C:\AndroidStudioProjects\PitchDetector\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.android.gms-play-services-iid-9.8.0_5bd7632174f373d39d80114200a22b606e13515c\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\AndroidStudioProjects\PitchDetector\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-gcm\9.8.0\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="23.0.2"
+        sha1="9dae58326f6f6a515022468cce56dd04ec3b9fdb">
+        <dex dex="C:\AndroidStudioProjects\PitchDetector\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.android.gms-play-services-gcm-9.8.0_29c6e94a21cdf0e2aa2717f796feb2374e3d1c42\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\AndroidStudioProjects\PitchDetector\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-ads-lite\9.8.0\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="23.0.2"
+        sha1="e9b2cfdfd59b03643f1e240668275378b96615a8">
+        <dex dex="C:\AndroidStudioProjects\PitchDetector\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.android.gms-play-services-ads-lite-9.8.0_abd13ce570692e343acf1c58ecbb8275d01fc7c9\classes.dex" />
+    </item>
+
+</items>
