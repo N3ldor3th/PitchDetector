@@ -123,7 +123,7 @@ public class MainActivity extends AppCompatActivity implements PitchDetectionHan
     }
 
     private void startDispatcher() {
-        dispatcher = AudioDispatcherFactory.fromDefaultMicrophone(44100, 4096, 1024);
+        dispatcher = AudioDispatcherFactory.fromDefaultMicrophone(44100, 4096, 2048);
         PitchDetectionHandler pdh = this;
         AudioProcessor p = new PitchProcessor(PitchProcessor.PitchEstimationAlgorithm.FFT_YIN, 44100, 4096, pdh);
         dispatcher.addAudioProcessor(p);
@@ -132,31 +132,31 @@ public class MainActivity extends AppCompatActivity implements PitchDetectionHan
 
     @Override
     public void handlePitch(PitchDetectionResult result, AudioEvent audioEvent) {
-        final NoteResult noteResult = NotePitchHandler.mapPitchDetectionResultToNoteResult(result);
+        final NoteResult noteResult = NotePitchHandler.mapPitchToNoteResult(result);
         //new DataLayerThread(mGoogleApiClient,"/message_path", Float.toString(pitchInHz)).start();
         runOnUiThread(new Runnable() {
             @Override
             public void run() {
                 if (noteResult.getPitch() != -1) {
-                    textHertz.setText("" + String.format("%.02f", noteResult.getPitch()) + " pitch found in Hz");
-                    textProb.setText("" + String.format("%.02f", noteResult.getProbability()) + " probability in %");
-                    textClosenessPercent.setText("" + String.format("%.02f", noteResult.getClosenessPercent()) + " closeness in %");
-                    textClosenessHz.setText("" + String.format("%.02f", noteResult.getClosenessHz()) + " closeness in Hz");
-                    textClosenessCents.setText("" + String.format("%.02f", noteResult.getClosenessCents()) + " closeness in cents");
+                    textHertz.setText("" + String.format("%.01f", noteResult.getPitch()) + " pitch found in Hz");
+                    textProb.setText("" + String.format("%.01f", noteResult.getProbability()) + " probability in %");
+                    textClosenessPercent.setText("" + String.format("%.01f", noteResult.getNote().getDifferencePercent()) + " closeness in %");
+                    textClosenessHz.setText("" + String.format("%.01f", noteResult.getNote().getDifferenceHz()) + " closeness in Hz");
+                    textClosenessCents.setText("" + String.format("%.01f", noteResult.getNote().getDifferenceCents()) + " closeness in cents");
                     textTone.setText("Closest note is :" + noteResult.getNote());
 
-                    double d = noteResult.getClosenessCents();
+                    double d = noteResult.getNote().getDifferenceCents();
                     int i = (int) d;
                     seekBar.setProgress(i);
 
-                    if (noteResult.getClosenessCents() >= -5.0F && noteResult.getClosenessCents() < 5.0F) {
+                    if (noteResult.getNote().getDifferenceCents() >= -5.0F && noteResult.getNote().getDifferenceCents() < 5.0F) {
                         seekBar.setThumbColor(Color.GREEN, Color.GREEN);
                     }else {
                         seekBar.setThumbColor(Color.RED, Color.RED);
                     }
 
                 } else {
-                    textHertz.setText("Pitch wasn't found");
+                    textHertz.setText("No pitch was found");
                     textProb.setText("");
                 }
             }

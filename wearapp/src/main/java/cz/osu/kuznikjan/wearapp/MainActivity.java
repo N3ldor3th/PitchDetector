@@ -17,12 +17,13 @@ import java.util.Locale;
 
 import be.tarsos.dsp.AudioDispatcher;
 import be.tarsos.dsp.AudioEvent;
+import be.tarsos.dsp.AudioProcessor;
 import be.tarsos.dsp.io.android.AudioDispatcherFactory;
 import be.tarsos.dsp.pitch.PitchDetectionHandler;
 import be.tarsos.dsp.pitch.PitchDetectionResult;
 import be.tarsos.dsp.pitch.PitchProcessor;
 
-public class MainActivity extends WearableActivity {
+public class MainActivity extends WearableActivity implements PitchDetectionHandler {
 
     private static final SimpleDateFormat AMBIENT_DATE_FORMAT =
             new SimpleDateFormat("HH:mm", Locale.US);
@@ -30,6 +31,7 @@ public class MainActivity extends WearableActivity {
     private BoxInsetLayout mContainerView;
     private TextView mTextView;
     private TextView mClockView;
+    private AudioDispatcher dispatcher;
 
     private MessageReceiver messageReceiver;
     private IntentFilter messageFilter;
@@ -44,21 +46,31 @@ public class MainActivity extends WearableActivity {
         mTextView = (TextView) findViewById(R.id.text);
         mClockView = (TextView) findViewById(R.id.clock);
 
-        PitchDetectionHandler handler = new PitchDetectionHandler() {
-            @Override
-            public void handlePitch(PitchDetectionResult pitchDetectionResult,
-                                    AudioEvent audioEvent) {
-                System.out.println(audioEvent.getTimeStamp() + " " + pitchDetectionResult.getPitch());
-            }
-        };
-        AudioDispatcher adp = AudioDispatcherFactory.fromDefaultMicrophone(11025, 1024, 512);
-        adp.addAudioProcessor(new PitchProcessor(PitchProcessor.PitchEstimationAlgorithm.FFT_YIN, 11025, 1024, handler));
-        adp.run();
+        //startDispatcher();
 
         //messageFilter = new IntentFilter(Intent.ACTION_SEND);
         //messageReceiver = new MessageReceiver();
         //LocalBroadcastManager.getInstance(this).registerReceiver(messageReceiver, messageFilter);
 
+    }
+
+//    @Override
+//    public void handlePitch(PitchDetectionResult result, AudioEvent audioEvent) {
+//        final NoteResult noteResult = NotePitchHandler.mapPitchToNote(result);
+//
+//        if(noteResult.getPitch()!=-1){
+//            mTextView.setText(noteResult.getNote());
+//            //mClockView.setText(String.format("%.01f", noteResult.getClosenessCents()));
+//        }
+//
+//    }
+
+    private void startDispatcher() {
+        dispatcher = AudioDispatcherFactory.fromDefaultMicrophone(44100, 4096, 2048);
+        PitchDetectionHandler pdh = this;
+        AudioProcessor p = new PitchProcessor(PitchProcessor.PitchEstimationAlgorithm.FFT_YIN, 44100, 4096, pdh);
+        dispatcher.addAudioProcessor(p);
+        new Thread(dispatcher,"Audio Dispatcher").start();
     }
 
     @Override
@@ -101,6 +113,12 @@ public class MainActivity extends WearableActivity {
             mClockView.setVisibility(View.GONE);
         }
     }
+
+    @Override
+    public void handlePitch(PitchDetectionResult pitchDetectionResult, AudioEvent audioEvent) {
+
+    }
+
 
     public class MessageReceiver extends BroadcastReceiver {
         @Override
