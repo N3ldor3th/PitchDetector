@@ -13,11 +13,6 @@ public class NotePitchHandler {
         }
 
         final Octave octave = new Octave(pitchDetectionResult);
-
-        if (octave.getOctaveFrequencies() == null) {
-            return new NoteResult();
-        }
-
         final Note note = new Note(octave.getOctaveFrequencies(), pitchDetectionResult);
         final NoteResult noteResult = new NoteResult(pitchDetectionResult, octave, note);
 
