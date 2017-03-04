@@ -4,8 +4,8 @@ import be.tarsos.dsp.pitch.PitchDetectionResult;
 
 public class NoteResult {
     private double pitch = 0.00f; // pitch of the note in Hz
-    private Octave octave;
-    private Note note;
+    private Octave octave = new Octave();
+    private Note note = new Note();
     private boolean isPitched = false;
     private double probability = 0.00f; // probability of the note in %
     private String noteFullName = "?"; // name of the closest note

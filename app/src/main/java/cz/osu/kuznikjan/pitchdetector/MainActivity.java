@@ -125,7 +125,7 @@ public class MainActivity extends AppCompatActivity implements PitchDetectionHan
     private void startDispatcher() {
         dispatcher = AudioDispatcherFactory.fromDefaultMicrophone(44100, 4096, 2048);
         PitchDetectionHandler pdh = this;
-        AudioProcessor p = new PitchProcessor(PitchProcessor.PitchEstimationAlgorithm.FFT_YIN, 44100, 4096, pdh);
+        AudioProcessor p = new PitchProcessor(PitchProcessor.PitchEstimationAlgorithm.MPM, 44100, 4096, pdh);
         dispatcher.addAudioProcessor(p);
         new Thread(dispatcher,"Audio Dispatcher").start();
     }
@@ -137,13 +137,13 @@ public class MainActivity extends AppCompatActivity implements PitchDetectionHan
         runOnUiThread(new Runnable() {
             @Override
             public void run() {
-                if (noteResult.getPitch() != -1) {
+                if ((noteResult.getPitch() != -1)) {
                     textHertz.setText("" + String.format("%.01f", noteResult.getPitch()) + " pitch found in Hz");
                     textProb.setText("" + String.format("%.01f", noteResult.getProbability()) + " probability in %");
                     textClosenessPercent.setText("" + String.format("%.01f", noteResult.getNote().getDifferencePercent()) + " closeness in %");
                     textClosenessHz.setText("" + String.format("%.01f", noteResult.getNote().getDifferenceHz()) + " closeness in Hz");
                     textClosenessCents.setText("" + String.format("%.01f", noteResult.getNote().getDifferenceCents()) + " closeness in cents");
-                    textTone.setText("Closest note is :" + noteResult.getNote());
+                    textTone.setText("Closest note is :" + noteResult.getNoteFullName());
 
                     double d = noteResult.getNote().getDifferenceCents();
                     int i = (int) d;

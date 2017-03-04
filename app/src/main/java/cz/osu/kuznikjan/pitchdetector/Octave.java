@@ -5,7 +5,7 @@ import be.tarsos.dsp.pitch.PitchDetectionResult;
 
 public class Octave {
 
-    private int octaveIndex = Integer.MIN_VALUE;
+    private int octaveIndex = -1;
     private double[] octaveFrequencies = oct0;
 
     private static final double ALLOWABLE_ERROR = 0.5; //hz
@@ -21,6 +21,10 @@ public class Octave {
     private static double[] oct8 = {4186, 4435, 4699, 4978, 5274, 5588, 5920, 6272, 6645, 7040, 7459, 7902, 8372};
 
     private static double[][] notes = {oct0, oct1, oct2, oct3, oct4, oct5, oct6, oct7, oct8};
+
+    public Octave(){
+
+    }
 
     public Octave(PitchDetectionResult pitchDetectionResult) {
         getOctave(pitchDetectionResult);

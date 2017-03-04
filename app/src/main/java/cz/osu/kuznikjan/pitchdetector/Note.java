@@ -5,15 +5,24 @@ import be.tarsos.dsp.pitch.PitchDetectionResult;
 
 public class Note {
 
-    private int noteIndex = Integer.MIN_VALUE;
+    private int noteIndex = -1;
     private String noteName = "?";
-    private double differenceHz = Double.MAX_VALUE;
-    private double differenceCents = Double.MAX_VALUE;
-    private double differencePercent = Double.MAX_VALUE;
+    private double differenceHz = 0.00f;
+    private double differenceCents = 0.00f;
+    private double differencePercent = 0.00f;
 
     private static String[] noteNames = {"C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "B", "C"};
 
+    public Note(){
+
+    }
+
     public Note(double[] frequencies, PitchDetectionResult pitchDetectionResult) {
+        getNote(frequencies,pitchDetectionResult);
+    }
+
+    private void getNote(double[] frequencies, PitchDetectionResult pitchDetectionResult){
+        differenceHz = Integer.MAX_VALUE;
         for (int i = 0; i < frequencies.length; i++) {
             double diff = Math.abs(pitchDetectionResult.getPitch() - frequencies[i]);
             if (diff < differenceHz) {

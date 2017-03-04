@@ -12,14 +12,14 @@ public class NotePitchHandler {
             return new NoteResult();
         }
 
-        Octave octave = new Octave(pitchDetectionResult);
+        final Octave octave = new Octave(pitchDetectionResult);
 
         if (octave.getOctaveFrequencies() == null) {
             return new NoteResult();
         }
 
-        Note note = new Note(octave.getOctaveFrequencies(), pitchDetectionResult);
-        NoteResult noteResult = new NoteResult(pitchDetectionResult, octave, note);
+        final Note note = new Note(octave.getOctaveFrequencies(), pitchDetectionResult);
+        final NoteResult noteResult = new NoteResult(pitchDetectionResult, octave, note);
 
         return noteResult;
     }
