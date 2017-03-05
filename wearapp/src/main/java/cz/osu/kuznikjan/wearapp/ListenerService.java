@@ -1,15 +1,13 @@
 package cz.osu.kuznikjan.wearapp;
-
+/*
 import android.content.Intent;
 import android.support.v4.content.LocalBroadcastManager;
-import android.util.Log;
 
 import com.google.android.gms.wearable.MessageEvent;
 import com.google.android.gms.wearable.WearableListenerService;
 
-/**
- * Created by kuznijan on 17.3.2016.
- */
+
+
 public class ListenerService extends WearableListenerService {
 
     @Override
@@ -27,4 +25,4 @@ public class ListenerService extends WearableListenerService {
             super.onMessageReceived(messageEvent);
         }
     }
-}
+}*/

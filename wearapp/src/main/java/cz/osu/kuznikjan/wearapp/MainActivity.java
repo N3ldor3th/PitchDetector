@@ -4,10 +4,12 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.content.LocalBroadcastManager;
 import android.support.wearable.activity.WearableActivity;
 import android.support.wearable.view.BoxInsetLayout;
+import android.support.wearable.view.WatchViewStub;
 import android.view.View;
 import android.widget.TextView;
 
@@ -22,6 +24,8 @@ import be.tarsos.dsp.io.android.AudioDispatcherFactory;
 import be.tarsos.dsp.pitch.PitchDetectionHandler;
 import be.tarsos.dsp.pitch.PitchDetectionResult;
 import be.tarsos.dsp.pitch.PitchProcessor;
+import cz.osu.kuznikjan.pitchlibrary.NotePitchHandler;
+import cz.osu.kuznikjan.pitchlibrary.NoteResult;
 
 public class MainActivity extends WearableActivity implements PitchDetectionHandler {
 
@@ -33,20 +37,22 @@ public class MainActivity extends WearableActivity implements PitchDetectionHand
     private TextView mClockView;
     private AudioDispatcher dispatcher;
 
-    private MessageReceiver messageReceiver;
+    //private MessageReceiver messageReceiver;
     private IntentFilter messageFilter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        setAmbientEnabled();
 
-        mContainerView = (BoxInsetLayout) findViewById(R.id.container);
+
+        //mContainerView = (BoxInsetLayout) findViewById(R.id.container);
         mTextView = (TextView) findViewById(R.id.text);
-        mClockView = (TextView) findViewById(R.id.clock);
 
-        //startDispatcher();
+
+        startDispatcher();
+
+        //setAmbientEnabled();
 
         //messageFilter = new IntentFilter(Intent.ACTION_SEND);
         //messageReceiver = new MessageReceiver();
@@ -54,21 +60,26 @@ public class MainActivity extends WearableActivity implements PitchDetectionHand
 
     }
 
-//    @Override
-//    public void handlePitch(PitchDetectionResult result, AudioEvent audioEvent) {
-//        final NoteResult noteResult = NotePitchHandler.mapPitchToNote(result);
-//
-//        if(noteResult.getPitch()!=-1){
-//            mTextView.setText(noteResult.getNote());
-//            //mClockView.setText(String.format("%.01f", noteResult.getClosenessCents()));
-//        }
-//
-//    }
+    @Override
+    public void handlePitch(PitchDetectionResult result, AudioEvent audioEvent) {
+        final NoteResult noteResult = NotePitchHandler.mapPitchToNoteResult(result);
+
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+            if(noteResult.getPitch()!=-1){
+                mTextView.setText(noteResult.getNoteFullName());
+            }
+            }
+        });
+
+
+    }
 
     private void startDispatcher() {
-        dispatcher = AudioDispatcherFactory.fromDefaultMicrophone(44100, 4096, 2048);
+        dispatcher = AudioDispatcherFactory.fromDefaultMicrophone(11025, 1024, 512);
         PitchDetectionHandler pdh = this;
-        AudioProcessor p = new PitchProcessor(PitchProcessor.PitchEstimationAlgorithm.FFT_YIN, 44100, 4096, pdh);
+        AudioProcessor p = new PitchProcessor(PitchProcessor.PitchEstimationAlgorithm.MPM, 11025, 1024, pdh);
         dispatcher.addAudioProcessor(p);
         new Thread(dispatcher,"Audio Dispatcher").start();
     }
@@ -76,13 +87,14 @@ public class MainActivity extends WearableActivity implements PitchDetectionHand
     @Override
     protected void onDestroy() {
         super.onDestroy();
+        dispatcher.stop();
         this.finish();
         System.exit(0);
-        LocalBroadcastManager.getInstance(this).unregisterReceiver(messageReceiver);
+        //LocalBroadcastManager.getInstance(this).unregisterReceiver(messageReceiver);
     }
 
 
-    @Override
+ /*   @Override
     public void onEnterAmbient(Bundle ambientDetails) {
         super.onEnterAmbient(ambientDetails);
         updateDisplay();
@@ -97,27 +109,20 @@ public class MainActivity extends WearableActivity implements PitchDetectionHand
     @Override
     public void onExitAmbient() {
         updateDisplay();
+        dispatcher.stop();
         super.onExitAmbient();
     }
 
+
+
     private void updateDisplay() {
         if (isAmbient()) {
-            mContainerView.setBackgroundColor(getResources().getColor(android.R.color.black));
-            mTextView.setTextColor(getResources().getColor(android.R.color.white));
-            mClockView.setVisibility(View.VISIBLE);
-
-            mClockView.setText(AMBIENT_DATE_FORMAT.format(new Date()));
+            mTextView.setText("bla");
         } else {
-            mContainerView.setBackground(null);
-            mTextView.setTextColor(getResources().getColor(android.R.color.black));
-            mClockView.setVisibility(View.GONE);
+            mTextView.setText("blu");
         }
     }
 
-    @Override
-    public void handlePitch(PitchDetectionResult pitchDetectionResult, AudioEvent audioEvent) {
-
-    }
 
 
     public class MessageReceiver extends BroadcastReceiver {
@@ -126,7 +131,7 @@ public class MainActivity extends WearableActivity implements PitchDetectionHand
             String message = intent.getStringExtra("message");
             mTextView.setText(message);
         }
-    }
+    }*/
 }
 
 

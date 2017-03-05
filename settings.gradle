@@ -1,1 +1,1 @@
-include ':app', ':wearapp'
+include ':app', ':wearapp', ':pitchlibrary'

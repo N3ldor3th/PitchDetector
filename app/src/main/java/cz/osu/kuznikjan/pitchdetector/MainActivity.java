@@ -29,10 +29,13 @@ import be.tarsos.dsp.io.android.AudioDispatcherFactory;
 import be.tarsos.dsp.pitch.PitchDetectionHandler;
 import be.tarsos.dsp.pitch.PitchDetectionResult;
 import be.tarsos.dsp.pitch.PitchProcessor;
+import cz.osu.kuznikjan.pitchlibrary.NotePitchHandler;
+import cz.osu.kuznikjan.pitchlibrary.NoteResult;
 
 public class MainActivity extends AppCompatActivity implements PitchDetectionHandler, View.OnClickListener,
         GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener {
     private static final int MY_PERMISSIONS_REQUEST_RECORD_AUDIO = 1;
+    private double accuracyInCents = 5.0;
     private AudioDispatcher dispatcher;
     private TextView textHertz, textProb, textTone, textClosenessPercent, textClosenessHz, textClosenessCents;
     private ImageButton fabRecord,fabStop;
@@ -116,7 +119,7 @@ public class MainActivity extends AppCompatActivity implements PitchDetectionHan
         for (int rate : new int[] {8000, 11025, 16000, 22050, 44100}) {  // add the rates you wish to check against
             int bufferSize = AudioRecord.getMinBufferSize(rate, AudioFormat.CHANNEL_CONFIGURATION_DEFAULT, AudioFormat.ENCODING_PCM_16BIT);
             if (bufferSize > 0) {
-                System.out.println("Hodnota: " + rate);
+                System.out.println("Value: " + rate);
 
             }
         }
@@ -149,7 +152,7 @@ public class MainActivity extends AppCompatActivity implements PitchDetectionHan
                     int i = (int) d;
                     seekBar.setProgress(i);
 
-                    if (noteResult.getNote().getDifferenceCents() >= -5.0F && noteResult.getNote().getDifferenceCents() < 5.0F) {
+                    if (noteResult.getNote().getDifferenceCents() >= -accuracyInCents && noteResult.getNote().getDifferenceCents() < accuracyInCents) {
                         seekBar.setThumbColor(Color.GREEN, Color.GREEN);
                     }else {
                         seekBar.setThumbColor(Color.RED, Color.RED);
