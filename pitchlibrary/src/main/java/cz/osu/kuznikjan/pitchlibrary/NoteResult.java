@@ -19,7 +19,6 @@ public class NoteResult {
         if(note.getNoteIndex()==LAST_TONE_IN_OCTAVE){
             octave.increaseOctaveIndex();
         }
-
         setPitch(pitchDetectionResult.getPitch());
         setPitched(pitchDetectionResult.isPitched());
         setProbability(pitchDetectionResult.getProbability());
