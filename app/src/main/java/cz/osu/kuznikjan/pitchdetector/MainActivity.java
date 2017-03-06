@@ -141,12 +141,17 @@ public class MainActivity extends AppCompatActivity implements PitchDetectionHan
             @Override
             public void run() {
                 if ((noteResult.getPitch() != -1)) {
-                    textHertz.setText("" + String.format("%.01f", noteResult.getPitch()) + " pitch found in Hz");
-                    textProb.setText("" + String.format("%.01f", noteResult.getProbability()) + " probability in %");
-                    textClosenessPercent.setText("" + String.format("%.01f", noteResult.getNote().getDifferencePercent()) + " closeness in %");
-                    textClosenessHz.setText("" + String.format("%.01f", noteResult.getNote().getDifferenceHz()) + " closeness in Hz");
-                    textClosenessCents.setText("" + String.format("%.01f", noteResult.getNote().getDifferenceCents()) + " closeness in cents");
-                    textTone.setText("Closest note is :" + noteResult.getNoteFullName());
+                    textHertz.setText(String.format("%.01f", noteResult.getPitch()));
+                    textClosenessHz.setText(String.format("%.01f", noteResult.getNote().getDifferenceHz()));
+                    if(noteResult.getNote().getNoteIndex()!=-1){
+                        textClosenessPercent.setText(String.format("%.01f", noteResult.getOctave().getOctaveFrequencies()[noteResult.getNote().getNoteIndex()]));
+                    }
+
+
+                    //textProb.setText("" + String.format("%.01f", noteResult.getProbability()));
+
+                    textClosenessCents.setText(String.format("%.01f", noteResult.getNote().getDifferenceCents()));
+                    textTone.setText(noteResult.getNoteFullName());
 
                     double d = noteResult.getNote().getDifferenceCents();
                     int i = (int) d;
@@ -158,9 +163,6 @@ public class MainActivity extends AppCompatActivity implements PitchDetectionHan
                         seekBar.setThumbColor(Color.RED, Color.RED);
                     }
 
-                } else {
-                    textHertz.setText("No pitch was found");
-                    textProb.setText("");
                 }
             }
         });

@@ -48,6 +48,24 @@
     </item>
     <item
         is-multidex="true"
+        jar="C:\Users\kuznijan\AppData\Local\Android\sdk\extras\m2repository\com\android\support\constraint\constraint-layout-solver\1.0.1\constraint-layout-solver-1.0.1.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="1ad79631209e77b0a2730fc112b4cc0c66a95132">
+        <dex dex="C:\AndroidStudioProjects\PitchDetector\app\build\intermediates\transforms\dex\debug\folders\1000\10\constraint-layout-solver-1.0.1_cd47d15e088117fdf1cc7959c635538e664906b9\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\kuznijan\.android\build-cache\b7febfd0dea76558f508fba27ae81002a7be9429\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="7113302c965566b66df46c6ca75ea301576114a5">
+        <dex dex="C:\AndroidStudioProjects\PitchDetector\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_0e7c166a947bf32a1a10b43c9651529f3935e843\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
         jar="C:\AndroidStudioProjects\PitchDetector\app\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
         jumboMode="true"
         optimize="true"
