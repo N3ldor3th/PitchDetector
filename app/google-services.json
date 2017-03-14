@@ -1,0 +1,35 @@
+{
+  "project_info": {
+    "project_number": "284439267413",
+    "project_id": "firebase-pitchdetector"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:284439267413:android:496e2e6e94ab779f",
+        "android_client_info": {
+          "package_name": "cz.osu.kuznikjan.pitchdetector"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB8xcwngYEZ7sy8GZ_jXWKbSQDm1OIsH4o"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
