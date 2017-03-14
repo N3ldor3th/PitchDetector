@@ -87,7 +87,7 @@ public class MainActivity extends AppCompatActivity implements PitchDetectionHan
             }
 
         }
-        getValidSampleRates();
+        //getValidSampleRates();
         startDispatcher();
 
         mGoogleApiClient = new GoogleApiClient.Builder(this)

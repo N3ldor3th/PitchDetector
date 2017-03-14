@@ -53,7 +53,7 @@ public class MainActivity extends WearableActivity implements PitchDetectionHand
         cents = (TextView) findViewById(R.id.cents);
         seekBar = (DiscreteSeekBar) findViewById(R.id.seekBar);
 
-        getValidSampleRates();
+        //getValidSampleRates();
         startDispatcher();
 
         //setAmbientEnabled();
