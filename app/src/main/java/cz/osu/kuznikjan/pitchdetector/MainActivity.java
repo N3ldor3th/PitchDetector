@@ -39,7 +39,7 @@ public class MainActivity extends AppCompatActivity implements PitchDetectionHan
     private static final int MY_PERMISSIONS_REQUEST_RECORD_AUDIO = 1;
     private double accuracyInCents = 5.0;
     private AudioDispatcher dispatcher;
-    private TextView textHertz, previousNote, nextNote, textTone, textClosenessPercent, textClosenessHz, textClosenessCents;
+    private TextView textHertz, previousNote, nextNote, textTone, noteHz, textClosenessHz, textClosenessCents;
     private ImageButton fabRecord,fabStop;
     private DiscreteSeekBar seekBar;
     private GoogleApiClient mGoogleApiClient;
@@ -54,7 +54,7 @@ public class MainActivity extends AppCompatActivity implements PitchDetectionHan
         previousNote = (TextView) findViewById(R.id.previousNote);
         nextNote = (TextView) findViewById(R.id.nextNote);
         textTone = (TextView) findViewById(R.id.note);
-        textClosenessPercent = (TextView) findViewById(R.id.deviation);
+        noteHz = (TextView) findViewById(R.id.noteHz);
         textClosenessHz = (TextView) findViewById(R.id.closenessHz);
         textClosenessCents = (TextView) findViewById(R.id.closenessCents);
         fabRecord = (ImageButton) findViewById(R.id.fab_record);
@@ -152,11 +152,7 @@ public class MainActivity extends AppCompatActivity implements PitchDetectionHan
                 if ((noteResult.getPitch() != -1)) {
                     textHertz.setText(String.format("%.02f", noteResult.getPitch()) + " Hz");
                     textClosenessHz.setText(String.format("%.02f", noteResult.getNote().getDifferenceHz()) + " Hz");
-                    if(noteResult.getNote().getNoteIndex()!=-1){
-                        textClosenessPercent.setText(String.format("%.02f", noteResult.getOctave().getOctaveFrequencies()[noteResult.getNote().getNoteIndex()]) + " Hz");
-                    }else{
-                        textClosenessPercent.setText("0,00 Hz");
-                    }
+                    noteHz.setText(String.format("%.02f", noteResult.getNoteHz()) + " Hz");
                     textClosenessCents.setText(String.format("%.01f", noteResult.getNote().getDifferenceCents()) + " c");
                     textTone.setText(noteResult.getNoteFullName());
                     previousNote.setText(noteResult.getPreviousFullName());
@@ -171,7 +167,6 @@ public class MainActivity extends AppCompatActivity implements PitchDetectionHan
                     }else {
                         seekBar.setThumbColor(Color.RED, Color.RED);
                     }
-
                 }
             }
         });
@@ -201,7 +196,6 @@ public class MainActivity extends AppCompatActivity implements PitchDetectionHan
                 break;
             default:
                 break;
-
         }
     }
 

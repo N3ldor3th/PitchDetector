@@ -6,6 +6,7 @@ public class NoteResult {
     private double pitch = 0.00f; // pitch of the note in Hz
     private Octave octave = new Octave();
     private Note note = new Note();
+    private double noteHz = 0.00f; // Hz value of current note
     private boolean isPitched = false;
     private double probability = 0.00f; // probability of the note in %
     private String noteFullName = "?"; // name of the closest note
@@ -26,28 +27,35 @@ public class NoteResult {
         setProbability(pitchDetectionResult.getProbability());
         setOctave(octave);
         setNote(note);
-        if(note.getNoteIndex()==FIRST_TONE_IN_OCTAVE){
-            setNoteFullName(note.getNoteName() + Integer.toString(octave.getOctaveIndex()));
-            setNextFullName(noteNames[note.getNoteIndex()+1] + Integer.toString(octave.getOctaveIndex()));
-            setPreviousFullName("B" + (octave.getOctaveIndex()-1));
-            return;
-        }
-        if(note.getNoteIndex()==PENULTIMATE_TONE_IN_OCTAVE){
-            setPreviousFullName(noteNames[note.getNoteIndex()-1] + Integer.toString(octave.getOctaveIndex()));
-            setNoteFullName(note.getNoteName() + Integer.toString(octave.getOctaveIndex()));
-            setNextFullName("C" + (octave.getOctaveIndex()+1));
-            return;
-        }
-
-        if(note.getNoteIndex()==LAST_TONE_IN_OCTAVE){
-            setPreviousFullName(noteNames[note.getNoteIndex()-1] + Integer.toString(octave.getOctaveIndex()));
-            setNoteFullName(note.getNoteName() + Integer.toString(octave.getOctaveIndex()+1));
-            setNextFullName("C#" + (octave.getOctaveIndex()+1));
-            return;
+        setNoteHz(getOctave().getOctaveFrequencies()[getNote().getNoteIndex()]);
+        switch(note.getNoteIndex()) {
+            case FIRST_TONE_IN_OCTAVE:
+                setNoteFullName(note.getNoteName() + Integer.toString(octave.getOctaveIndex()));
+                setNextFullName(noteNames[note.getNoteIndex()+1] + Integer.toString(octave.getOctaveIndex()));
+                setPreviousFullName("B" + (octave.getOctaveIndex()-1));
+                return;
+            case PENULTIMATE_TONE_IN_OCTAVE:
+                setPreviousFullName(noteNames[note.getNoteIndex()-1] + Integer.toString(octave.getOctaveIndex()));
+                setNoteFullName(note.getNoteName() + Integer.toString(octave.getOctaveIndex()));
+                setNextFullName("C" + (octave.getOctaveIndex()+1));
+                return;
+            case LAST_TONE_IN_OCTAVE:
+                setPreviousFullName(noteNames[note.getNoteIndex()-1] + Integer.toString(octave.getOctaveIndex()));
+                setNoteFullName(note.getNoteName() + Integer.toString(octave.getOctaveIndex()+1));
+                setNextFullName("C#" + (octave.getOctaveIndex()+1));
+                return;
         }
         setNoteFullName(note.getNoteName() + Integer.toString(octave.getOctaveIndex()));
         setNextFullName(noteNames[note.getNoteIndex()+1] + Integer.toString(octave.getOctaveIndex()));
         setPreviousFullName(noteNames[note.getNoteIndex()-1] + Integer.toString(octave.getOctaveIndex()));
+    }
+
+    public double getNoteHz() {
+        return noteHz;
+    }
+
+    public void setNoteHz(double noteHz) {
+        this.noteHz = noteHz;
     }
 
     public double getPitch() {

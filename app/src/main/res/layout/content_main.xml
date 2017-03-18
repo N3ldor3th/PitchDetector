@@ -22,7 +22,7 @@
         android:textSize="24sp"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toLeftOf="@+id/deviation"
+        app:layout_constraintRight_toLeftOf="@+id/noteHz"
         app:layout_constraintTop_toTopOf="parent"
         tools:layout_constraintLeft_creator="1"
         tools:layout_constraintRight_creator="1"
@@ -51,7 +51,7 @@
         android:layout_marginEnd="8dp" />
 
     <TextView
-        android:id="@+id/deviation"
+        android:id="@+id/noteHz"
         android:layout_width="120dp"
         android:layout_height="30dp"
         android:layout_marginBottom="-47dp"
@@ -79,7 +79,7 @@
         android:textAlignment="center"
         android:textSize="24sp"
         app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintLeft_toRightOf="@+id/deviation"
+        app:layout_constraintLeft_toRightOf="@+id/noteHz"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:layout_constraintLeft_creator="1"
