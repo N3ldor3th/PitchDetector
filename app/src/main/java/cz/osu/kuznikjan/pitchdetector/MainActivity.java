@@ -16,9 +16,12 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.ImageButton;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -38,11 +41,13 @@ import be.tarsos.dsp.pitch.PitchProcessor;
 import cz.osu.kuznikjan.pitchlibrary.NotePitchHandler;
 import cz.osu.kuznikjan.pitchlibrary.NoteResult;
 
-public class MainActivity extends AppCompatActivity implements PitchDetectionHandler, View.OnClickListener,
+public class MainActivity extends AppCompatActivity implements PitchDetectionHandler, View.OnClickListener, AdapterView.OnItemSelectedListener,
         GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener {
     private static final int MY_PERMISSIONS_REQUEST_RECORD_AUDIO = 1;
     private double accuracyInCents = 5.0;
+    private PitchProcessor.PitchEstimationAlgorithm chosenPDA = PitchProcessor.PitchEstimationAlgorithm.MPM;
     private AudioDispatcher dispatcher;
+    private Spinner spinner;
     private TextView textHertz, previousNote, nextNote, textTone, noteHz, textClosenessHz, textClosenessCents;
     private ImageButton fabRecord,fabStop;
     private DiscreteSeekBar seekBar;
@@ -51,10 +56,10 @@ public class MainActivity extends AppCompatActivity implements PitchDetectionHan
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        spinner = (Spinner) findViewById(R.id.pdas);
         textHertz = (TextView) findViewById(R.id.hz);
         previousNote = (TextView) findViewById(R.id.previousNote);
         nextNote = (TextView) findViewById(R.id.nextNote);
@@ -66,8 +71,12 @@ public class MainActivity extends AppCompatActivity implements PitchDetectionHan
         fabStop = (ImageButton) findViewById(R.id.fab_stop);
         fabRecord.setOnClickListener(this);
         fabStop.setOnClickListener(this);
-
         seekBar = (DiscreteSeekBar) findViewById(R.id.seekBar);
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
+                R.array.pdas, android.R.layout.simple_list_item_1);
+        adapter.setDropDownViewResource(android.R.layout.simple_list_item_1);
+        spinner.setAdapter(adapter);
+        spinner.setOnItemSelectedListener(this);
 
         if (ContextCompat.checkSelfPermission(this,
                 Manifest.permission.RECORD_AUDIO)
@@ -125,25 +134,58 @@ public class MainActivity extends AppCompatActivity implements PitchDetectionHan
         }
     }
 
-    public void getValidSampleRates() {
-        for (int rate : new int[] {8000, 11025, 16000, 22050, 44100}) {  // add the rates you wish to check against
-            int bufferSize = AudioRecord.getMinBufferSize(rate, AudioFormat.CHANNEL_CONFIGURATION_DEFAULT, AudioFormat.ENCODING_PCM_16BIT);
-            if (bufferSize > 0) {
-                System.out.println("Value: " + rate);
-
-            }
+    @Override
+    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+        switch(position){
+            case 0:
+                Toast.makeText(this, "MPM", Toast.LENGTH_LONG).show();
+                dispatcher.stop();
+                chosenPDA = PitchProcessor.PitchEstimationAlgorithm.MPM;
+                startDispatcher();
+                break;
+            case 1:
+                Toast.makeText(this, "Dynamic Wavelet", Toast.LENGTH_LONG).show();
+                dispatcher.stop();
+                chosenPDA = PitchProcessor.PitchEstimationAlgorithm.DYNAMIC_WAVELET;
+                startDispatcher();
+                break;
+            case 2:
+                Snackbar.make(view, "YIN", Snackbar.LENGTH_LONG).setAction("Action", null).show();
+                dispatcher.stop();
+                chosenPDA = PitchProcessor.PitchEstimationAlgorithm.YIN;
+                startDispatcher();
+                break;
+            case 3:
+                Toast.makeText(this, "FFT_YIN", Toast.LENGTH_LONG).show();
+                dispatcher.stop();
+                chosenPDA = PitchProcessor.PitchEstimationAlgorithm.FFT_YIN;
+                startDispatcher();
+                break;
+            case 4:
+                Snackbar.make(view, "FFT_PITCH", Snackbar.LENGTH_LONG).setAction("Action", null).show();
+                dispatcher.stop();
+                chosenPDA = PitchProcessor.PitchEstimationAlgorithm.FFT_PITCH;
+                startDispatcher();
+                break;
+            case 5:
+                Snackbar.make(view, "AMDF", Snackbar.LENGTH_LONG).setAction("Action", null).show();
+                dispatcher.stop();
+                chosenPDA = PitchProcessor.PitchEstimationAlgorithm.AMDF;
+                startDispatcher();
+                break;
         }
-        // To get preferred buffer size and sampling rate.
-        AudioManager audioManager = (AudioManager) this.getSystemService(Context.AUDIO_SERVICE);
-        String rate = audioManager.getProperty(AudioManager.PROPERTY_OUTPUT_SAMPLE_RATE);
-        String size = audioManager.getProperty(AudioManager.PROPERTY_OUTPUT_FRAMES_PER_BUFFER);
-        System.out.println("Size : + " + size + " & Rate: " + rate);
     }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> parent) {
+
+    }
+
 
     private void startDispatcher() {
         dispatcher = AudioDispatcherFactory.fromDefaultMicrophone(44100, 4096, 2048);
         PitchDetectionHandler pdh = this;
-        AudioProcessor p = new PitchProcessor(PitchProcessor.PitchEstimationAlgorithm.MPM, 44100, 4096, pdh);
+        AudioProcessor p = new PitchProcessor(chosenPDA, 44100, 4096, pdh);
         dispatcher.addAudioProcessor(p);
         new Thread(dispatcher,"Audio Dispatcher").start();
     }
@@ -231,6 +273,21 @@ public class MainActivity extends AppCompatActivity implements PitchDetectionHan
         }
     }
 
+    public void getValidSampleRates() {
+        for (int rate : new int[] {8000, 11025, 16000, 22050, 44100}) {  // add the rates you wish to check against
+            int bufferSize = AudioRecord.getMinBufferSize(rate, AudioFormat.CHANNEL_CONFIGURATION_DEFAULT, AudioFormat.ENCODING_PCM_16BIT);
+            if (bufferSize > 0) {
+                System.out.println("Value: " + rate);
+
+            }
+        }
+        // To get preferred buffer size and sampling rate.
+        AudioManager audioManager = (AudioManager) this.getSystemService(Context.AUDIO_SERVICE);
+        String rate = audioManager.getProperty(AudioManager.PROPERTY_OUTPUT_SAMPLE_RATE);
+        String size = audioManager.getProperty(AudioManager.PROPERTY_OUTPUT_FRAMES_PER_BUFFER);
+        System.out.println("Size : + " + size + " & Rate: " + rate);
+    }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -263,6 +320,5 @@ public class MainActivity extends AppCompatActivity implements PitchDetectionHan
     public void onConnectionFailed(ConnectionResult connectionResult) {
 
     }
-
 
 }
