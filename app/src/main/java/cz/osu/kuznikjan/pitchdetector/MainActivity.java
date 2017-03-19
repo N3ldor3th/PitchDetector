@@ -7,6 +7,7 @@ import android.media.AudioFormat;
 import android.media.AudioManager;
 import android.media.AudioRecord;
 import android.os.Bundle;
+import android.support.annotation.IdRes;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
@@ -16,7 +17,10 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
@@ -47,6 +51,7 @@ public class MainActivity extends AppCompatActivity implements PitchDetectionHan
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -61,6 +66,7 @@ public class MainActivity extends AppCompatActivity implements PitchDetectionHan
         fabStop = (ImageButton) findViewById(R.id.fab_stop);
         fabRecord.setOnClickListener(this);
         fabStop.setOnClickListener(this);
+
         seekBar = (DiscreteSeekBar) findViewById(R.id.seekBar);
 
         if (ContextCompat.checkSelfPermission(this,
@@ -172,8 +178,6 @@ public class MainActivity extends AppCompatActivity implements PitchDetectionHan
         });
     }
 
-
-
     @Override
     public void onClick(View view) {
         final String stopped = "Recording stopped...";
@@ -259,5 +263,6 @@ public class MainActivity extends AppCompatActivity implements PitchDetectionHan
     public void onConnectionFailed(ConnectionResult connectionResult) {
 
     }
+
 
 }

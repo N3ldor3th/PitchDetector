@@ -10,7 +10,7 @@ public class Note {
     private double differenceHz = 0.00f;
     private double differenceCents = 0.00f;
     private double differencePercent = 0.00f;
-    private static final int HALFTONES_IN_OCTAVE_MULTIPLIED_BY_100 = 1200;
+    private static final int LOG10_CENT_CONSTANT = 3986; // 1200/log10(2)
 
     private static String[] noteNames = {"C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "B", "C"};
 
@@ -32,7 +32,7 @@ public class Note {
             }
         }
         setNoteName(noteNames[noteIndex]);
-        setDifferenceCents(HALFTONES_IN_OCTAVE_MULTIPLIED_BY_100 * Math.log(pitchDetectionResult.getPitch()/frequencies[noteIndex]));
+        setDifferenceCents(LOG10_CENT_CONSTANT * Math.log10(pitchDetectionResult.getPitch()/frequencies[noteIndex]));
         setDifferencePercent((pitchDetectionResult.getPitch() / frequencies[noteIndex]) * 100);
     }
 

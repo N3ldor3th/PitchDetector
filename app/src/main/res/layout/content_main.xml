@@ -18,6 +18,7 @@
         android:layout_marginRight="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="101dp"
+        android:text="0.00 Hz"
         android:textAlignment="center"
         android:textSize="24sp"
         app:layout_constraintHorizontal_bias="0.0"
@@ -26,19 +27,20 @@
         app:layout_constraintTop_toTopOf="parent"
         tools:layout_constraintLeft_creator="1"
         tools:layout_constraintRight_creator="1"
-        tools:layout_constraintTop_creator="1" />
+        tools:layout_constraintTop_creator="1"
+        android:layout_marginEnd="8dp" />
 
     <org.adw.library.widgets.discreteseekbar.DiscreteSeekBar
         android:id="@+id/seekBar"
         android:layout_width="379dp"
-        android:layout_height="37dp"
-        android:layout_marginLeft="0dp"
-        android:layout_marginRight="0dp"
+        android:layout_height="32dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
         android:layout_marginTop="245dp"
         app:dsb_indicatorColor="@color/colorPrimary"
         app:dsb_indicatorPopupEnabled="true"
-        app:dsb_max="40"
-        app:dsb_min="-40"
+        app:dsb_max="50"
+        app:dsb_min="-50"
         app:dsb_progressColor="@color/colorPrimary"
         app:dsb_rippleColor="@color/colorPrimary"
         app:dsb_thumbSize="30dp"
@@ -54,10 +56,9 @@
         android:id="@+id/noteHz"
         android:layout_width="120dp"
         android:layout_height="30dp"
-        android:layout_marginBottom="-47dp"
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
-        android:text=""
+        android:text="0.00 Hz"
         android:textAlignment="center"
         android:textSize="24sp"
         app:layout_constraintBottom_toTopOf="@+id/note"
@@ -66,7 +67,8 @@
         app:layout_constraintRight_toRightOf="parent"
         tools:layout_constraintLeft_creator="1"
         tools:layout_constraintRight_creator="1"
-        tools:layout_constraintTop_creator="1" />
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp" />
 
     <TextView
         android:id="@+id/closenessHz"
@@ -75,7 +77,7 @@
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
         android:layout_marginTop="101dp"
-        android:text=""
+        android:text="0.00 Hz"
         android:textAlignment="center"
         android:textSize="24sp"
         app:layout_constraintHorizontal_bias="1.0"
@@ -84,7 +86,9 @@
         app:layout_constraintTop_toTopOf="parent"
         tools:layout_constraintLeft_creator="1"
         tools:layout_constraintRight_creator="1"
-        tools:layout_constraintTop_creator="1" />
+        tools:layout_constraintTop_creator="1"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp" />
 
     <TextView
         android:id="@+id/closenessCents"
@@ -93,7 +97,7 @@
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
         android:layout_marginTop="8dp"
-        android:text=""
+        android:text="0.0 c"
         android:textAlignment="center"
         android:textSize="24sp"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -101,7 +105,49 @@
         app:layout_constraintTop_toBottomOf="@+id/seekBar"
         tools:layout_constraintLeft_creator="1"
         tools:layout_constraintRight_creator="1"
-        tools:layout_constraintTop_creator="1" />
+        tools:layout_constraintTop_creator="1"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp" />
+
+    <TextView
+        android:id="@+id/cents_MIN"
+        android:layout_width="120dp"
+        android:layout_height="30dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="8dp"
+        android:text="-50.0 c"
+        android:textAlignment="viewStart"
+        android:textSize="24sp"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@+id/closenessCents"
+        app:layout_constraintTop_toBottomOf="@+id/seekBar"
+        tools:layout_constraintLeft_creator="1"
+        tools:layout_constraintRight_creator="1"
+        tools:layout_constraintTop_creator="1"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp" />
+
+    <TextView
+        android:id="@+id/cents_MAX"
+        android:layout_width="120dp"
+        android:layout_height="30dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="8dp"
+        android:text="50.0 c"
+        android:textAlignment="viewEnd"
+        android:textSize="24sp"
+        app:layout_constraintHorizontal_bias="0.111"
+        app:layout_constraintLeft_toRightOf="@+id/closenessCents"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/seekBar"
+        tools:layout_constraintLeft_creator="1"
+        tools:layout_constraintRight_creator="1"
+        tools:layout_constraintTop_creator="1"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp" />
 
     <TextView
         android:id="@+id/note"
@@ -109,9 +155,10 @@
         android:layout_height="106dp"
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
-        android:layout_marginLeft="0dp"
-        android:layout_marginRight="0dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
         android:layout_marginStart="8dp"
+        android:text=""
         android:textAlignment="center"
         android:textSize="90sp"
         app:layout_constraintBottom_toTopOf="@+id/seekBar"
@@ -119,8 +166,7 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         tools:layout_constraintLeft_creator="1"
-        tools:layout_constraintRight_creator="1"
-        tools:layout_constraintTop_creator="1" />
+        tools:layout_constraintRight_creator="1" />
 
     <TextView
         android:id="@+id/previousNote"
@@ -129,6 +175,7 @@
         android:layout_marginBottom="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
+        android:text=""
         android:textAlignment="center"
         android:textSize="40sp"
         app:layout_constraintBottom_toTopOf="@+id/seekBar"
@@ -137,7 +184,8 @@
         app:layout_constraintRight_toLeftOf="@+id/note"
         tools:layout_constraintLeft_creator="1"
         tools:layout_constraintRight_creator="1"
-        tools:layout_constraintTop_creator="1" />
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp" />
 
     <TextView
         android:id="@+id/nextNote"
@@ -146,6 +194,7 @@
         android:layout_marginBottom="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
+        android:text=""
         android:textAlignment="center"
         android:textSize="40sp"
         app:layout_constraintBottom_toTopOf="@+id/seekBar"
@@ -154,7 +203,7 @@
         app:layout_constraintRight_toRightOf="parent"
         tools:layout_constraintLeft_creator="1"
         tools:layout_constraintRight_creator="1"
-        tools:layout_constraintTop_creator="1" />
-
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp" />
 
 </android.support.constraint.ConstraintLayout>
