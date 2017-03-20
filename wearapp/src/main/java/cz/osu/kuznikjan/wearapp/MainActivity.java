@@ -7,8 +7,13 @@ import android.media.AudioFormat;
 import android.media.AudioManager;
 import android.media.AudioRecord;
 import android.os.Bundle;
+import android.support.design.widget.Snackbar;
 import android.support.wearable.activity.WearableActivity;
 import android.support.wearable.view.BoxInsetLayout;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 import org.adw.library.widgets.discreteseekbar.DiscreteSeekBar;
@@ -26,17 +31,18 @@ import be.tarsos.dsp.pitch.PitchProcessor;
 import cz.osu.kuznikjan.pitchlibrary.NotePitchHandler;
 import cz.osu.kuznikjan.pitchlibrary.NoteResult;
 
-public class MainActivity extends WearableActivity implements PitchDetectionHandler {
+public class MainActivity extends WearableActivity implements PitchDetectionHandler{
 
     private static final SimpleDateFormat AMBIENT_DATE_FORMAT =
             new SimpleDateFormat("HH:mm", Locale.US);
 
     private BoxInsetLayout mContainerView;
-    private TextView noteName, hz, cents;
+    private TextView noteHz, actualHz, previousNote, nextNote, noteName, cents;
     private DiscreteSeekBar seekBar;
     private TextView mClockView;
     private AudioDispatcher dispatcher;
     private double accuracyInCents = 5.0;
+    private PitchProcessor.PitchEstimationAlgorithm chosenPDA = PitchProcessor.PitchEstimationAlgorithm.MPM;
 
 
     //private MessageReceiver messageReceiver;
@@ -48,10 +54,14 @@ public class MainActivity extends WearableActivity implements PitchDetectionHand
         setContentView(R.layout.activity_main);
 
         //mContainerView = (BoxInsetLayout) findViewById(R.id.container);
-        noteName = (TextView) findViewById(R.id.note);
-        hz = (TextView) findViewById(R.id.hz);
+        noteName = (TextView) findViewById(R.id.noteName);
+        previousNote = (TextView) findViewById(R.id.previousNote);
+        nextNote = (TextView) findViewById(R.id.nextNote);
+        actualHz = (TextView) findViewById(R.id.actualHz);
+        noteHz = (TextView) findViewById(R.id.noteHz);
         cents = (TextView) findViewById(R.id.cents);
         seekBar = (DiscreteSeekBar) findViewById(R.id.seekBar);
+
 
         //getValidSampleRates();
         startDispatcher();
@@ -72,9 +82,12 @@ public class MainActivity extends WearableActivity implements PitchDetectionHand
             @Override
             public void run() {
             if(noteResult.getPitch()!=-1){
-                hz.setText(String.format("%.02f", noteResult.getPitch()) + " Hz");
-                noteName.setText(noteResult.getNoteFullName());
+                actualHz.setText(String.format("%.02f", noteResult.getPitch()) + " Hz");
+                noteHz.setText(String.format("%.02f", noteResult.getNoteHz()) + " Hz");
                 cents.setText(String.format("%.01f", noteResult.getNote().getDifferenceCents()) + " c");
+                noteName.setText(noteResult.getNoteFullName());
+                previousNote.setText(noteResult.getPreviousFullName());
+                nextNote.setText(noteResult.getNextFullName());
 
                 double d = noteResult.getNote().getDifferenceCents();
                 int i = (int) d;
@@ -88,8 +101,6 @@ public class MainActivity extends WearableActivity implements PitchDetectionHand
             }
             }
         });
-
-
     }
 
     public void getValidSampleRates() {
@@ -112,7 +123,7 @@ public class MainActivity extends WearableActivity implements PitchDetectionHand
     private void startDispatcher() {
         dispatcher = AudioDispatcherFactory.fromDefaultMicrophone(8000, 1024, 0);
         PitchDetectionHandler pdh = this;
-        AudioProcessor p = new PitchProcessor(PitchProcessor.PitchEstimationAlgorithm.MPM, 8000, 1024, pdh);
+        AudioProcessor p = new PitchProcessor(chosenPDA, 8000, 1024, pdh);
         dispatcher.addAudioProcessor(p);
         new Thread(dispatcher,"Audio Dispatcher").start();
     }

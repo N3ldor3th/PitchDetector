@@ -136,39 +136,36 @@ public class MainActivity extends AppCompatActivity implements PitchDetectionHan
 
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+
+        Snackbar.make(view, "Pitch Detection algorithm chosen: " + spinner.getSelectedItem().toString(), Snackbar.LENGTH_SHORT).setAction("Action", null).show();
+
         switch(position){
             case 0:
-                Toast.makeText(this, "MPM", Toast.LENGTH_LONG).show();
                 dispatcher.stop();
                 chosenPDA = PitchProcessor.PitchEstimationAlgorithm.MPM;
                 startDispatcher();
                 break;
             case 1:
-                Toast.makeText(this, "Dynamic Wavelet", Toast.LENGTH_LONG).show();
                 dispatcher.stop();
                 chosenPDA = PitchProcessor.PitchEstimationAlgorithm.DYNAMIC_WAVELET;
                 startDispatcher();
                 break;
             case 2:
-                Snackbar.make(view, "YIN", Snackbar.LENGTH_LONG).setAction("Action", null).show();
                 dispatcher.stop();
                 chosenPDA = PitchProcessor.PitchEstimationAlgorithm.YIN;
                 startDispatcher();
                 break;
             case 3:
-                Toast.makeText(this, "FFT_YIN", Toast.LENGTH_LONG).show();
                 dispatcher.stop();
                 chosenPDA = PitchProcessor.PitchEstimationAlgorithm.FFT_YIN;
                 startDispatcher();
                 break;
             case 4:
-                Snackbar.make(view, "FFT_PITCH", Snackbar.LENGTH_LONG).setAction("Action", null).show();
                 dispatcher.stop();
                 chosenPDA = PitchProcessor.PitchEstimationAlgorithm.FFT_PITCH;
                 startDispatcher();
                 break;
             case 5:
-                Snackbar.make(view, "AMDF", Snackbar.LENGTH_LONG).setAction("Action", null).show();
                 dispatcher.stop();
                 chosenPDA = PitchProcessor.PitchEstimationAlgorithm.AMDF;
                 startDispatcher();
