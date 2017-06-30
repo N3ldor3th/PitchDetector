@@ -1,10 +1,11 @@
 package cz.osu.kuznikjan.pitchlibrary;
 
 
+import com.orm.SugarRecord;
+
 import be.tarsos.dsp.pitch.PitchDetectionResult;
 
-public class Octave {
-
+public class Octave{
     private int octaveIndex = -1;
     private double[] octaveFrequencies = oct0;
 
@@ -57,4 +58,10 @@ public class Octave {
         this.octaveFrequencies = octaveFrequencies;
     }
 
+    @Override
+    public String toString() {
+        return "Octave{" +
+                "octaveIndex=" + octaveIndex +
+                '}';
+    }
 }

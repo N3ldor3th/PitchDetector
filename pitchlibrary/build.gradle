@@ -26,5 +26,6 @@ dependencies {
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
+    compile 'com.github.satyan:sugar:1.4'
     testCompile 'junit:junit:4.12'
 }

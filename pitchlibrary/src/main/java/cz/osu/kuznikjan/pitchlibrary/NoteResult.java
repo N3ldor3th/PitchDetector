@@ -1,8 +1,12 @@
 package cz.osu.kuznikjan.pitchlibrary;
 
+
+import com.orm.SugarRecord;
+import com.orm.dsl.Ignore;
+
 import be.tarsos.dsp.pitch.PitchDetectionResult;
 
-public class NoteResult {
+public class NoteResult{
     private double pitch = 0.00f; // pitch of the note in Hz
     private Octave octave = new Octave();
     private Note note = new Note();
@@ -12,9 +16,13 @@ public class NoteResult {
     private String noteFullName = "?"; // name of the closest note
     private String previousFullName = "?"; // name of the previous note
     private String nextFullName = "?"; // name of the next note
+    @Ignore
     private static final int LAST_TONE_IN_OCTAVE = 12;
+    @Ignore
     private static final int PENULTIMATE_TONE_IN_OCTAVE = 11;
+    @Ignore
     private static final int FIRST_TONE_IN_OCTAVE = 0;
+    @Ignore
     private static String[] noteNames = {"C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "B", "C"};
 
     public NoteResult(){
@@ -120,5 +128,20 @@ public class NoteResult {
 
     public void setNextFullName(String nextFullName) {
         this.nextFullName = nextFullName;
+    }
+
+    @Override
+    public String toString() {
+        return "NoteResult{" +
+                ", pitch=" + pitch +
+                ", octave=" + octave +
+                ", note=" + note +
+                ", noteHz=" + noteHz +
+                ", isPitched=" + isPitched +
+                ", probability=" + probability +
+                ", noteFullName='" + noteFullName + '\'' +
+                ", previousFullName='" + previousFullName + '\'' +
+                ", nextFullName='" + nextFullName + '\'' +
+                '}';
     }
 }

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="pdas">
+        <item>McLeod Method</item>
+        <item>Dynamic Wavelet</item>
+        <item>YIN</item>
+        <item>FFT_YIN</item>
+        <item>AMDF</item>
+    </string-array>
+</resources>

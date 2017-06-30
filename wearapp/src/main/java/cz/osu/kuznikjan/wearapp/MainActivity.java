@@ -77,7 +77,6 @@ public class MainActivity extends WearableActivity implements PitchDetectionHand
     @Override
     public void handlePitch(PitchDetectionResult result, AudioEvent audioEvent) {
         final NoteResult noteResult = NotePitchHandler.mapPitchToNoteResult(result);
-
         runOnUiThread(new Runnable() {
             @Override
             public void run() {

@@ -7,9 +7,10 @@ android {
     defaultConfig {
         applicationId "cz.osu.kuznikjan.pitchdetector"
         minSdkVersion 17
-        targetSdkVersion 23
+        targetSdkVersion 21
         versionCode 1
         versionName "1.0"
+        multiDexEnabled true
     }
 
     buildTypes {
@@ -46,6 +47,9 @@ dependencies {
     compile 'com.google.android.gms:play-services:10.2.0'
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
     compile 'org.adw.library:discrete-seekbar:1.0.1'
+    compile 'com.github.satyan:sugar:1.5'
+    compile 'com.android.support:multidex:1.0.0'
+    compile 'com.opencsv:opencsv:3.9'
     wearApp project(':wearapp')
     compile project(':pitchlibrary')
 }

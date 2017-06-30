@@ -7,7 +7,6 @@ import android.media.AudioFormat;
 import android.media.AudioManager;
 import android.media.AudioRecord;
 import android.os.Bundle;
-import android.support.annotation.IdRes;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
@@ -19,17 +18,19 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ImageButton;
-import android.widget.RadioButton;
-import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.wearable.Wearable;
+import com.opencsv.CSVWriter;
 
 import org.adw.library.widgets.discreteseekbar.DiscreteSeekBar;
+
+import java.util.Calendar;
+import java.util.Date;
+import java.util.List;
 
 import be.tarsos.dsp.AudioDispatcher;
 import be.tarsos.dsp.AudioEvent;
@@ -38,6 +39,8 @@ import be.tarsos.dsp.io.android.AudioDispatcherFactory;
 import be.tarsos.dsp.pitch.PitchDetectionHandler;
 import be.tarsos.dsp.pitch.PitchDetectionResult;
 import be.tarsos.dsp.pitch.PitchProcessor;
+import cz.osu.kuznikjan.pitchdetector.db.NoteResultDB;
+import cz.osu.kuznikjan.pitchdetector.db.NoteResultMapper;
 import cz.osu.kuznikjan.pitchlibrary.NotePitchHandler;
 import cz.osu.kuznikjan.pitchlibrary.NoteResult;
 
@@ -52,10 +55,12 @@ public class MainActivity extends AppCompatActivity implements PitchDetectionHan
     private ImageButton fabRecord,fabStop;
     private DiscreteSeekBar seekBar;
     private GoogleApiClient mGoogleApiClient;
+    private CSVWriter writer = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        NoteResultDB.deleteAll(NoteResultDB.class);
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -112,27 +117,7 @@ public class MainActivity extends AppCompatActivity implements PitchDetectionHan
                 .build();
     }
 
-    @Override
-    public void onRequestPermissionsResult(int requestCode,
-                                           String permissions[], int[] grantResults) {
-        switch (requestCode) {
-            case MY_PERMISSIONS_REQUEST_RECORD_AUDIO: {
-                // If request is cancelled, the result arrays are empty.
-                if (grantResults.length > 0
-                        && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                    startDispatcher();
-                    // permission was granted, yay! Do the
-                    // contacts-related task you need to do.
 
-                } else {
-                    // permission denied, boo! Disable the
-                    // functionality that depends on this permission.
-                }
-                return;
-            }
-
-        }
-    }
 
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -162,11 +147,6 @@ public class MainActivity extends AppCompatActivity implements PitchDetectionHan
                 break;
             case 4:
                 dispatcher.stop();
-                chosenPDA = PitchProcessor.PitchEstimationAlgorithm.FFT_PITCH;
-                startDispatcher();
-                break;
-            case 5:
-                dispatcher.stop();
                 chosenPDA = PitchProcessor.PitchEstimationAlgorithm.AMDF;
                 startDispatcher();
                 break;
@@ -194,6 +174,9 @@ public class MainActivity extends AppCompatActivity implements PitchDetectionHan
         runOnUiThread(new Runnable() {
             @Override
             public void run() {
+                NoteResultDB noteResultDB = NoteResultMapper.mapNoteResult(noteResult);
+                noteResultDB.save();
+
                 if ((noteResult.getPitch() != -1)) {
                     textHertz.setText(String.format("%.02f", noteResult.getPitch()) + " Hz");
                     textClosenessHz.setText(String.format("%.02f", noteResult.getNote().getDifferenceHz()) + " Hz");
@@ -226,6 +209,14 @@ public class MainActivity extends AppCompatActivity implements PitchDetectionHan
             case R.id.fab_stop:
                 Snackbar.make(view, "Recording stopped...", Snackbar.LENGTH_LONG).setAction("Action", null).show();
                 dispatcher.stop();
+                try {
+                    List<NoteResultDB> notes = NoteResultDB.listAll(NoteResultDB.class);
+                    for (NoteResultDB note: notes) {
+                        System.out.println(note.getPitch());
+                    }
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
                 view.setVisibility(View.GONE);
                 fabRecord.setVisibility(View.VISIBLE);
                 new DataLayerThread(mGoogleApiClient,"/message_path", stopped).start();
@@ -278,7 +269,6 @@ public class MainActivity extends AppCompatActivity implements PitchDetectionHan
 
             }
         }
-        // To get preferred buffer size and sampling rate.
         AudioManager audioManager = (AudioManager) this.getSystemService(Context.AUDIO_SERVICE);
         String rate = audioManager.getProperty(AudioManager.PROPERTY_OUTPUT_SAMPLE_RATE);
         String size = audioManager.getProperty(AudioManager.PROPERTY_OUTPUT_FRAMES_PER_BUFFER);
@@ -305,6 +295,28 @@ public class MainActivity extends AppCompatActivity implements PitchDetectionHan
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode,
+                                           String permissions[], int[] grantResults) {
+        switch (requestCode) {
+            case MY_PERMISSIONS_REQUEST_RECORD_AUDIO: {
+                // If request is cancelled, the result arrays are empty.
+                if (grantResults.length > 0
+                        && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                    startDispatcher();
+                    // permission was granted, yay! Do the
+                    // contacts-related task you need to do.
+
+                } else {
+                    // permission denied, boo! Disable the
+                    // functionality that depends on this permission.
+                }
+                return;
+            }
+
+        }
     }
 
 

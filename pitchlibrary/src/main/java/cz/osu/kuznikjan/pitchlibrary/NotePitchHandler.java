@@ -10,11 +10,9 @@ public class NotePitchHandler{
         if ((pitchDetectionResult.getPitch() < PITCH_LOW_LIMIT) || (pitchDetectionResult.getPitch() > PITCH_HIGH_LIMIT)) {
             return new NoteResult();
         }
-
         final Octave octave = new Octave(pitchDetectionResult);
         final Note note = new Note(octave.getOctaveFrequencies(), pitchDetectionResult);
         final NoteResult noteResult = new NoteResult(pitchDetectionResult, octave, note);
-
         return noteResult;
     }
 }

@@ -1,9 +1,11 @@
 package cz.osu.kuznikjan.pitchlibrary;
 
 
+import com.orm.SugarRecord;
+
 import be.tarsos.dsp.pitch.PitchDetectionResult;
 
-public class Note {
+public class Note{
 
     private int noteIndex = -1;
     private String noteName = "?";
@@ -74,5 +76,16 @@ public class Note {
 
     public void setDifferencePercent(double differencePercent) {
         this.differencePercent = differencePercent;
+    }
+
+    @Override
+    public String toString() {
+        return "Note{" +
+                "noteIndex=" + noteIndex +
+                ", noteName='" + noteName + '\'' +
+                ", differenceHz=" + differenceHz +
+                ", differenceCents=" + differenceCents +
+                ", differencePercent=" + differencePercent +
+                '}';
     }
 }
