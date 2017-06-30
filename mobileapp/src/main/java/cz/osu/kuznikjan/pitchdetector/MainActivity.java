@@ -24,12 +24,9 @@ import android.widget.TextView;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.wearable.Wearable;
-import com.opencsv.CSVWriter;
 
 import org.adw.library.widgets.discreteseekbar.DiscreteSeekBar;
 
-import java.util.Calendar;
-import java.util.Date;
 import java.util.List;
 
 import be.tarsos.dsp.AudioDispatcher;
@@ -55,7 +52,6 @@ public class MainActivity extends AppCompatActivity implements PitchDetectionHan
     private ImageButton fabRecord,fabStop;
     private DiscreteSeekBar seekBar;
     private GoogleApiClient mGoogleApiClient;
-    private CSVWriter writer = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -86,28 +82,14 @@ public class MainActivity extends AppCompatActivity implements PitchDetectionHan
         if (ContextCompat.checkSelfPermission(this,
                 Manifest.permission.RECORD_AUDIO)
                 != PackageManager.PERMISSION_GRANTED) {
-            // Should we show an explanation?
             if (ActivityCompat.shouldShowRequestPermissionRationale(this,
                     Manifest.permission.RECORD_AUDIO)) {
-                // Show an expanation to the user *asynchronously* -- don't block
-                // this thread waiting for the user's response! After the user
-                // sees the explanation, try again to request the permission.
-
             } else {
-
-                // No explanation needed, we can request the permission.
-
                 ActivityCompat.requestPermissions(this,
                         new String[]{Manifest.permission.RECORD_AUDIO},
                         MY_PERMISSIONS_REQUEST_RECORD_AUDIO);
-
-                // MY_PERMISSIONS_REQUEST_READ_CONTACTS is an
-                // app-defined int constant. The callback method gets the
-                // result of the request.
             }
-
         }
-        //getValidSampleRates();
         startDispatcher();
 
         mGoogleApiClient = new GoogleApiClient.Builder(this)
@@ -116,8 +98,6 @@ public class MainActivity extends AppCompatActivity implements PitchDetectionHan
                 .addOnConnectionFailedListener(this)
                 .build();
     }
-
-
 
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -157,7 +137,6 @@ public class MainActivity extends AppCompatActivity implements PitchDetectionHan
     public void onNothingSelected(AdapterView<?> parent) {
 
     }
-
 
     private void startDispatcher() {
         dispatcher = AudioDispatcherFactory.fromDefaultMicrophone(44100, 4096, 2048);
@@ -207,29 +186,33 @@ public class MainActivity extends AppCompatActivity implements PitchDetectionHan
 
         switch(view.getId()){
             case R.id.fab_stop:
-                Snackbar.make(view, "Recording stopped...", Snackbar.LENGTH_LONG).setAction("Action", null).show();
+                Snackbar.make(view, stopped, Snackbar.LENGTH_LONG).setAction("Action", null).show();
                 dispatcher.stop();
-                try {
-                    List<NoteResultDB> notes = NoteResultDB.listAll(NoteResultDB.class);
-                    for (NoteResultDB note: notes) {
-                        System.out.println(note.getPitch());
-                    }
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
+                printAllRecords();
                 view.setVisibility(View.GONE);
                 fabRecord.setVisibility(View.VISIBLE);
-                new DataLayerThread(mGoogleApiClient,"/message_path", stopped).start();
+                //new DataLayerThread(mGoogleApiClient,"/message_path", stopped).start();
                 break;
             case R.id.fab_record:
-                Snackbar.make(view, "Recording started...", Snackbar.LENGTH_LONG).setAction("Action", null).show();
+                Snackbar.make(view, started, Snackbar.LENGTH_LONG).setAction("Action", null).show();
                 startDispatcher();
                 view.setVisibility(View.GONE);
                 fabStop.setVisibility(View.VISIBLE);
-                new DataLayerThread(mGoogleApiClient,"/message_path", started).start();
+                //new DataLayerThread(mGoogleApiClient,"/message_path", started).start();
                 break;
             default:
                 break;
+        }
+    }
+
+    public void printAllRecords(){
+        try {
+            List<NoteResultDB> notes = NoteResultDB.listAll(NoteResultDB.class);
+            for (NoteResultDB note: notes) {
+                System.out.println(note.getPitch());
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 
@@ -284,41 +267,14 @@ public class MainActivity extends AppCompatActivity implements PitchDetectionHan
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
-        //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
             return true;
         }
 
         return super.onOptionsItemSelected(item);
     }
-
-    @Override
-    public void onRequestPermissionsResult(int requestCode,
-                                           String permissions[], int[] grantResults) {
-        switch (requestCode) {
-            case MY_PERMISSIONS_REQUEST_RECORD_AUDIO: {
-                // If request is cancelled, the result arrays are empty.
-                if (grantResults.length > 0
-                        && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                    startDispatcher();
-                    // permission was granted, yay! Do the
-                    // contacts-related task you need to do.
-
-                } else {
-                    // permission denied, boo! Disable the
-                    // functionality that depends on this permission.
-                }
-                return;
-            }
-
-        }
-    }
-
 
     @Override
     public void onConnectionSuspended(int i) {
@@ -329,5 +285,4 @@ public class MainActivity extends AppCompatActivity implements PitchDetectionHan
     public void onConnectionFailed(ConnectionResult connectionResult) {
 
     }
-
 }

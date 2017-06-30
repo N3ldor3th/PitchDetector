@@ -1,8 +1,6 @@
 package cz.osu.kuznikjan.pitchlibrary;
 
 
-import com.orm.SugarRecord;
-
 import be.tarsos.dsp.pitch.PitchDetectionResult;
 
 public class Octave{

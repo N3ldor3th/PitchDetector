@@ -7,13 +7,7 @@ import android.media.AudioFormat;
 import android.media.AudioManager;
 import android.media.AudioRecord;
 import android.os.Bundle;
-import android.support.design.widget.Snackbar;
 import android.support.wearable.activity.WearableActivity;
-import android.support.wearable.view.BoxInsetLayout;
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.Spinner;
 import android.widget.TextView;
 
 import org.adw.library.widgets.discreteseekbar.DiscreteSeekBar;
@@ -36,24 +30,18 @@ public class MainActivity extends WearableActivity implements PitchDetectionHand
     private static final SimpleDateFormat AMBIENT_DATE_FORMAT =
             new SimpleDateFormat("HH:mm", Locale.US);
 
-    private BoxInsetLayout mContainerView;
     private TextView noteHz, actualHz, previousNote, nextNote, noteName, cents;
     private DiscreteSeekBar seekBar;
     private TextView mClockView;
     private AudioDispatcher dispatcher;
     private double accuracyInCents = 5.0;
     private PitchProcessor.PitchEstimationAlgorithm chosenPDA = PitchProcessor.PitchEstimationAlgorithm.MPM;
-
-
-    //private MessageReceiver messageReceiver;
     private IntentFilter messageFilter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        //mContainerView = (BoxInsetLayout) findViewById(R.id.container);
         noteName = (TextView) findViewById(R.id.noteName);
         previousNote = (TextView) findViewById(R.id.previousNote);
         nextNote = (TextView) findViewById(R.id.nextNote);
@@ -62,8 +50,6 @@ public class MainActivity extends WearableActivity implements PitchDetectionHand
         cents = (TextView) findViewById(R.id.cents);
         seekBar = (DiscreteSeekBar) findViewById(R.id.seekBar);
 
-
-        //getValidSampleRates();
         startDispatcher();
 
         //setAmbientEnabled();
@@ -117,8 +103,6 @@ public class MainActivity extends WearableActivity implements PitchDetectionHand
         System.out.println("Size : + " + size + " & Rate: " + rate);
     }
 
-
-
     private void startDispatcher() {
         dispatcher = AudioDispatcherFactory.fromDefaultMicrophone(8000, 1024, 0);
         PitchDetectionHandler pdh = this;
@@ -135,7 +119,7 @@ public class MainActivity extends WearableActivity implements PitchDetectionHand
         System.exit(0);
         //LocalBroadcastManager.getInstance(this).unregisterReceiver(messageReceiver);
     }
-
+}
 
  /*   @Override
     public void onEnterAmbient(Bundle ambientDetails) {
@@ -175,7 +159,6 @@ public class MainActivity extends WearableActivity implements PitchDetectionHand
             noteName.setText(message);
         }
     }*/
-}
 
 
 

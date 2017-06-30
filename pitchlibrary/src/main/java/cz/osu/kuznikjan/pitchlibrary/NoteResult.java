@@ -1,7 +1,6 @@
 package cz.osu.kuznikjan.pitchlibrary;
 
 
-import com.orm.SugarRecord;
 import com.orm.dsl.Ignore;
 
 import be.tarsos.dsp.pitch.PitchDetectionResult;
