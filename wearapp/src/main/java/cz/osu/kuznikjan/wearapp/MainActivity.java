@@ -13,6 +13,7 @@ import android.widget.TextView;
 import org.adw.library.widgets.discreteseekbar.DiscreteSeekBar;
 
 import java.text.SimpleDateFormat;
+import java.util.List;
 import java.util.Locale;
 
 import be.tarsos.dsp.AudioDispatcher;
@@ -24,6 +25,8 @@ import be.tarsos.dsp.pitch.PitchDetectionResult;
 import be.tarsos.dsp.pitch.PitchProcessor;
 import cz.osu.kuznikjan.pitchlibrary.NotePitchHandler;
 import cz.osu.kuznikjan.pitchlibrary.NoteResult;
+import cz.osu.kuznikjan.pitchlibrary.db.NoteResultDB;
+import cz.osu.kuznikjan.pitchlibrary.db.NoteResultMapper;
 
 public class MainActivity extends WearableActivity implements PitchDetectionHandler{
 
@@ -41,6 +44,7 @@ public class MainActivity extends WearableActivity implements PitchDetectionHand
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        NoteResultDB.deleteAll(NoteResultDB.class);
         setContentView(R.layout.activity_main);
         noteName = (TextView) findViewById(R.id.noteName);
         previousNote = (TextView) findViewById(R.id.previousNote);
@@ -66,6 +70,9 @@ public class MainActivity extends WearableActivity implements PitchDetectionHand
         runOnUiThread(new Runnable() {
             @Override
             public void run() {
+                NoteResultDB noteResultDB = NoteResultMapper.mapNoteResult(noteResult);
+                noteResultDB.save();
+
             if(noteResult.getPitch()!=-1){
                 actualHz.setText(String.format("%.02f", noteResult.getPitch()) + " Hz");
                 noteHz.setText(String.format("%.02f", noteResult.getNoteHz()) + " Hz");
@@ -74,9 +81,7 @@ public class MainActivity extends WearableActivity implements PitchDetectionHand
                 previousNote.setText(noteResult.getPreviousFullName());
                 nextNote.setText(noteResult.getNextFullName());
 
-                double d = noteResult.getNote().getDifferenceCents();
-                int i = (int) d;
-                seekBar.setProgress(i);
+                setCentsToProgressBar(noteResult.getNote().getDifferenceCents());
 
                 if (noteResult.getNote().getDifferenceCents() >= -accuracyInCents && noteResult.getNote().getDifferenceCents() < accuracyInCents) {
                     seekBar.setThumbColor(Color.GREEN, Color.GREEN);
@@ -86,6 +91,13 @@ public class MainActivity extends WearableActivity implements PitchDetectionHand
             }
             }
         });
+    }
+
+
+    private void setCentsToProgressBar(double differenceCents) {
+        double d = differenceCents;
+        int i = (int) d;
+        seekBar.setProgress(i);
     }
 
     public void getValidSampleRates() {
@@ -115,9 +127,21 @@ public class MainActivity extends WearableActivity implements PitchDetectionHand
     protected void onDestroy() {
         super.onDestroy();
         dispatcher.stop();
+        printAllRecords();
         this.finish();
         System.exit(0);
         //LocalBroadcastManager.getInstance(this).unregisterReceiver(messageReceiver);
+    }
+
+    public void printAllRecords(){
+        try {
+            List<NoteResultDB> notes = NoteResultDB.listAll(NoteResultDB.class);
+            for (NoteResultDB note: notes) {
+                System.out.println(note.getPitch());
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }
 
@@ -140,8 +164,6 @@ public class MainActivity extends WearableActivity implements PitchDetectionHand
         super.onExitAmbient();
     }
 
-
-
     private void updateDisplay() {
         if (isAmbient()) {
             noteName.setText("bla");
@@ -149,8 +171,6 @@ public class MainActivity extends WearableActivity implements PitchDetectionHand
             noteName.setText("blu");
         }
     }
-
-
 
     public class MessageReceiver extends BroadcastReceiver {
         @Override

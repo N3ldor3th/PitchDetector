@@ -27,5 +27,7 @@ dependencies {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
     compile 'com.github.satyan:sugar:1.4'
+    compile 'com.github.satyan:sugar:1.5'
+    compile 'com.android.support:multidex:1.0.0'
     testCompile 'junit:junit:4.12'
 }

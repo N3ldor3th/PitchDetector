@@ -1,4 +1,4 @@
-package cz.osu.kuznikjan.pitchdetector.db;
+package cz.osu.kuznikjan.pitchlibrary.db;
 
 import cz.osu.kuznikjan.pitchlibrary.NoteResult;
 

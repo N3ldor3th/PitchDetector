@@ -36,10 +36,10 @@ import be.tarsos.dsp.io.android.AudioDispatcherFactory;
 import be.tarsos.dsp.pitch.PitchDetectionHandler;
 import be.tarsos.dsp.pitch.PitchDetectionResult;
 import be.tarsos.dsp.pitch.PitchProcessor;
-import cz.osu.kuznikjan.pitchdetector.db.NoteResultDB;
-import cz.osu.kuznikjan.pitchdetector.db.NoteResultMapper;
 import cz.osu.kuznikjan.pitchlibrary.NotePitchHandler;
 import cz.osu.kuznikjan.pitchlibrary.NoteResult;
+import cz.osu.kuznikjan.pitchlibrary.db.NoteResultDB;
+import cz.osu.kuznikjan.pitchlibrary.db.NoteResultMapper;
 
 public class MainActivity extends AppCompatActivity implements PitchDetectionHandler, View.OnClickListener, AdapterView.OnItemSelectedListener,
         GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener {
@@ -90,6 +90,7 @@ public class MainActivity extends AppCompatActivity implements PitchDetectionHan
                         MY_PERMISSIONS_REQUEST_RECORD_AUDIO);
             }
         }
+
         startDispatcher();
 
         mGoogleApiClient = new GoogleApiClient.Builder(this)
@@ -165,9 +166,7 @@ public class MainActivity extends AppCompatActivity implements PitchDetectionHan
                     previousNote.setText(noteResult.getPreviousFullName());
                     nextNote.setText(noteResult.getNextFullName());
 
-                    double d = noteResult.getNote().getDifferenceCents();
-                    int i = (int) d;
-                    seekBar.setProgress(i);
+                    setCentsToProgressBar(noteResult.getNote().getDifferenceCents());
 
                     if (noteResult.getNote().getDifferenceCents() >= -accuracyInCents && noteResult.getNote().getDifferenceCents() < accuracyInCents) {
                         seekBar.setThumbColor(Color.GREEN, Color.GREEN);
@@ -214,6 +213,12 @@ public class MainActivity extends AppCompatActivity implements PitchDetectionHan
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    private void setCentsToProgressBar(double differenceCents) {
+        double d = differenceCents;
+        int i = (int) d;
+        seekBar.setProgress(i);
     }
 
     @Override
